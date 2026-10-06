@@ -9,6 +9,15 @@
 <x-dc>
 <helmet>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Meu Direito — Civic Tech for Migrants, Refugees and Stateless People</title>
+<meta name="description" content="Open-source multilingual civic-tech platform that turns migration rights into accessible guidance and connects migrants, refugees and stateless people with trusted services and official sources in Brazil.">
+<meta name="author" content="Kauan Tosta">
+<meta name="application-name" content="Meu Direito">
+<meta name="theme-color" content="#2457E6">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Meu Direito — Multilingual Civic Tech">
+<meta property="og:description" content="Migration rights translated into clear, multilingual and actionable pathways, grounded in official sources, field experience and applied research.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
 <script src="./v2/legal-base.js"></script>
@@ -106,6 +115,26 @@ body.md-rm *{transition:none !important;animation:none !important}
 </button>
 </sc-for>
 </div>
+</section>
+
+<section aria-labelledby="h-authority" style="position:relative;overflow:hidden;background:linear-gradient(135deg,#172033 0%,#1F3155 100%);color:#fff;border-radius:18px;padding:clamp(20px,4vw,30px);display:flex;flex-direction:column;gap:16px;box-shadow:0 14px 40px -28px rgba(23,32,51,.8)">
+<div style="font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#BFD0FF">{{ authorityTag }}</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px 28px;align-items:start">
+<div style="display:flex;flex-direction:column;gap:10px">
+<h2 id="h-authority" style="margin:0;font-size:clamp(21px,3vw,28px);line-height:1.2;letter-spacing:-.015em">{{ authorityTitle }}</h2>
+<p style="margin:0;color:#DCE3EE;line-height:1.6">{{ authorityBody }}</p>
+<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:4px">
+<a href="https://tosta-page.vercel.app/" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 14px;border-radius:10px;background:#fff;color:#172033;font-weight:700;text-decoration:none">{{ authorityPortfolio }}</a>
+<a href="https://github.com/philtosta/meu-direito" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 14px;border-radius:10px;border:1px solid rgba(255,255,255,.35);color:#fff;font-weight:700;text-decoration:none">{{ authoritySource }}</a>
+</div>
+</div>
+<ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px">
+<li style="display:flex;gap:10px"><span aria-hidden="true" style="flex:none;margin-top:3px;width:22px;height:22px;border-radius:50%;background:#2E58C7;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:none;stroke:#fff;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"><path d="{{ ic.check }}"></path></svg></span><span style="color:#F3F6FB">{{ authorityOne }}</span></li>
+<li style="display:flex;gap:10px"><span aria-hidden="true" style="flex:none;margin-top:3px;width:22px;height:22px;border-radius:50%;background:#2E58C7;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:none;stroke:#fff;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"><path d="{{ ic.check }}"></path></svg></span><span style="color:#F3F6FB">{{ authorityTwo }}</span></li>
+<li style="display:flex;gap:10px"><span aria-hidden="true" style="flex:none;margin-top:3px;width:22px;height:22px;border-radius:50%;background:#2E58C7;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:none;stroke:#fff;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"><path d="{{ ic.check }}"></path></svg></span><span style="color:#F3F6FB">{{ authorityThree }}</span></li>
+</ul>
+</div>
+<p style="margin:0;padding-top:12px;border-top:1px solid rgba(255,255,255,.15);font-size:12px;line-height:1.5;color:#AFC0D9">{{ authorityNote }}</p>
 </section>
 <a href="#/ajuda/urgente" style="display:flex;align-items:center;gap:14px;padding:14px 16px;background:#FFF0F0;border:1px solid #F3C4C4;border-radius:14px;text-decoration:none;color:#172033" style-hover="border-color:#C93636;color:#172033">
 <span aria-hidden="true" style="flex:none;width:40px;height:40px;border-radius:10px;background:#C93636;color:#fff;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" style="width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="{{ ic.phone }}"></path></svg></span>
@@ -645,6 +674,8 @@ body.md-rm *{transition:none !important;animation:none !important}
 <a href="#/fontes" style="color:#172033;min-height:32px;display:inline-flex;align-items:center">{{ t.sources }}</a>
 <a href="#/privacidade" style="color:#172033;min-height:32px;display:inline-flex;align-items:center">{{ t.privacy }}</a>
 <a href="#/atendimento" style="color:#172033;min-height:32px;display:inline-flex;align-items:center">{{ t.staffArea }}</a>
+<a href="https://tosta-page.vercel.app/" target="_blank" rel="noopener noreferrer" style="color:#172033;min-height:32px;display:inline-flex;align-items:center">{{ authorityPortfolio }}</a>
+<a href="https://github.com/philtosta/meu-direito" target="_blank" rel="noopener noreferrer" style="color:#172033;min-height:32px;display:inline-flex;align-items:center">{{ authoritySource }}</a>
 </nav>
 <span>{{ t.footerLegal }}</span>
 </div>
@@ -932,7 +963,7 @@ body.md-rm *{transition:none !important;animation:none !important}
 <div id="v3-layer">
 <sc-if value="{{ layerOpen }}"><div data-noprint onClick="{{ closeLayer }}" style="position:fixed;inset:0;z-index:100;background:rgba(23,32,51,.45)"></div></sc-if>
 <sc-if value="{{ sheetOpen }}">
-<div data-modal data-noprint role="dialog" aria-modal="true" aria-labelledby="sh-t" lang="{{ sheetLang }}" dir="{{ sheetDir }}" style="position:fixed;z-index:101;inset-inline:{{ shInset }};bottom:{{ shBottom }};top:{{ shTop }};transform:{{ shTransform }};width:{{ shWidth }};max-height:calc(100vh - 48px);overflow:auto;background:#fff;border-radius:{{ shRadius }};padding:8px 16px calc(16px + env(safe-area-inset-bottom));box-shadow:0 -10px 40px -12px rgba(23,32,51,.35)">
+<div data-modal data-noprint role="dialog" aria-modal="true" aria-labelledby="sh-t" lang="{{ sheetLang }}" dir="{{ sheetDir }}" style="position:fixed;z-index:101;left:{{ shLeft }};right:{{ shRight }};bottom:{{ shBottom }};top:{{ shTop }};transform:{{ shTransform }};width:{{ shWidth }};max-width:calc(100vw - 32px);max-height:calc(100dvh - 48px);overflow:auto;overscroll-behavior:contain;background:#fff;border-radius:{{ shRadius }};padding:8px 16px calc(16px + env(safe-area-inset-bottom));box-shadow:0 -10px 40px -12px rgba(23,32,51,.35)">
 <sc-if value="{{ narrow }}"><div aria-hidden="true" style="width:40px;height:4px;border-radius:4px;background:#D5DCE7;margin:6px auto 10px"></div></sc-if>
 <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding:6px 0 10px"><h2 id="sh-t" style="margin:0;font-size:18px;font-weight:700">{{ sheetTitle }}</h2><button type="button" onClick="{{ closeLayer }}" aria-label="{{ closeLabel }}" style="width:44px;height:44px;border:none;background:#F1F4F9;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:none;stroke:#172033;stroke-width:2;stroke-linecap:round;stroke-linejoin:round" aria-hidden="true"><path d="{{ ic.x }}"></path></svg></button></div>
 <sc-if value="{{ shLang }}"><ul role="listbox" aria-labelledby="sh-t" style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:4px"><sc-for list="{{ langList }}" as="l"><li><button type="button" role="option" aria-selected="{{ l.sel }}" onClick="{{ l.onClick }}" lang="{{ l.code }}" dir="{{ l.dir }}" style="display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;min-height:56px;padding:8px 14px;background:{{ l.bg }};border:1px solid {{ l.bd }};border-radius:12px;cursor:pointer;color:#172033;text-align:start"><span style="display:flex;flex-direction:column"><span style="font-size:17px;font-weight:600">{{ l.name }}</span><span dir="ltr" style="font-size:13px;color:#556275">{{ l.code }}</span></span><sc-if value="{{ l.sel }}"><svg viewBox="0 0 24 24" style="width:22px;height:22px;fill:none;stroke:#2457E6;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round" aria-hidden="true"><path d="{{ ic.check }}"></path></svg></sc-if></button></li></sc-for></ul></sc-if>
@@ -968,6 +999,69 @@ body.md-rm *{transition:none !important;animation:none !important}
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script>
+
+const AUTHORITY_COPY = {
+  'pt-BR': {
+    tag: 'Pesquisa aplicada · tecnologia cívica · direitos humanos',
+    title: 'Construído a partir de experiência de campo e pesquisa internacional',
+    body: 'O Meu Direito foi idealizado e desenvolvido por Kauan Tosta, pesquisador brasileiro e poliglota que fala oito idiomas, para transformar direitos migratórios em caminhos de ação claros, multilíngues e verificáveis.',
+    one: 'Dois anos à frente da Proteção Jurídica do Centro de Serviço ao Migrante (CSM), em articulação com o ecossistema da Cátedra Sérgio Vieira de Mello/ACNUR.',
+    two: 'Pesquisa sobre integração de migrantes na Bahia apresentada e publicada em iniciativas acadêmicas da Universidad de Salamanca e da Universidade Portucalense em 2025.',
+    three: 'Meu Direito submetido ao Prêmio Jovem Cientista 2026 do CNPq; proposta Porto Seguro protocolada na Assembleia Legislativa da Bahia sob nº 2026042048700.',
+    portfolio: 'Conheça o pesquisador', source: 'Ver código aberto',
+    note: 'Projeto independente. As referências institucionais descrevem trajetória e pesquisa e não implicam endosso institucional ao aplicativo.'
+  },
+  en: {
+    tag: 'Applied research · civic technology · human rights',
+    title: 'Built from field experience and international research',
+    body: 'Meu Direito was conceived and built by Kauan Tosta, a Brazilian researcher and polyglot who speaks eight languages, to turn migration rights into clear, multilingual and verifiable pathways for action.',
+    one: 'Two years leading Legal Protection at Centro de Serviço ao Migrante (CSM), within an ecosystem connected to the Sérgio Vieira de Mello Chair/UNHCR.',
+    two: 'Research on migrant integration in Bahia presented and published through academic initiatives at the University of Salamanca and Universidade Portucalense in 2025.',
+    three: 'Meu Direito submitted to the 2026 Young Scientist Award of CNPq; the Porto Seguro bill proposal was officially filed with the Legislative Assembly of Bahia under protocol no. 2026042048700.',
+    portfolio: 'Meet the researcher', source: 'View open-source code',
+    note: 'Independent project. Institutional references describe prior experience and research and do not imply institutional endorsement of the application.'
+  },
+  es: {
+    tag: 'Investigación aplicada · tecnología cívica · derechos humanos',
+    title: 'Construido desde la experiencia de campo y la investigación internacional',
+    body: 'Meu Direito fue concebido y desarrollado por Kauan Tosta, investigador brasileño y políglota que habla ocho idiomas, para convertir los derechos migratorios en rutas de acción claras, multilingües y verificables.',
+    one: 'Dos años al frente de Protección Jurídica del Centro de Serviço ao Migrante (CSM), en un ecosistema vinculado a la Cátedra Sérgio Vieira de Mello/ACNUR.',
+    two: 'Investigación sobre integración de migrantes en Bahía presentada y publicada en iniciativas académicas de la Universidad de Salamanca y la Universidade Portucalense en 2025.',
+    three: 'Meu Direito presentado al Premio Joven Científico 2026 del CNPq; propuesta Porto Seguro registrada oficialmente en la Asamblea Legislativa de Bahía bajo el protocolo nº 2026042048700.',
+    portfolio: 'Conoce al investigador', source: 'Ver código abierto',
+    note: 'Proyecto independiente. Las referencias institucionales describen experiencia e investigación previas y no implican respaldo institucional de la aplicación.'
+  },
+  ar: {
+    tag: 'بحث تطبيقي · تكنولوجيا مدنية · حقوق الإنسان',
+    title: 'مبني على الخبرة الميدانية والبحث الدولي',
+    body: 'ابتكر وطوّر Kauan Tosta منصة Meu Direito، وهو باحث برازيلي متعدد اللغات يتحدث ثماني لغات، لتحويل حقوق المهاجرين إلى مسارات عمل واضحة ومتعددة اللغات وقابلة للتحقق.',
+    one: 'عامان في قيادة الحماية القانونية في Centro de Serviço ao Migrante (CSM)، ضمن منظومة مرتبطة بكرسي Sérgio Vieira de Mello ومفوضية الأمم المتحدة لشؤون اللاجئين.',
+    two: 'بحث حول إدماج المهاجرين في باهيا عُرض ونُشر ضمن مبادرات أكاديمية في جامعة سالامانكا وUniversidade Portucalense عام 2025.',
+    three: 'قُدّمت Meu Direito إلى جائزة العالم الشاب 2026 التابعة لـ CNPq؛ كما سُجّل مقترح Porto Seguro رسمياً لدى الجمعية التشريعية لولاية باهيا برقم 2026042048700.',
+    portfolio: 'تعرّف على الباحث', source: 'عرض الشفرة مفتوحة المصدر',
+    note: 'مشروع مستقل. تشير المراجع المؤسسية إلى الخبرة والبحث السابقين ولا تعني اعتماد المؤسسة للتطبيق.'
+  },
+  'zh-CN': {
+    tag: '应用研究 · 公民科技 · 人权',
+    title: '源于一线实践与国际研究',
+    body: 'Meu Direito 由巴西研究者、会八种语言的 Kauan Tosta 构思并开发，旨在把移民权利转化为清晰、多语言且可核验的行动路径。',
+    one: '曾连续两年负责 Centro de Serviço ao Migrante（CSM）的法律保护工作，该机构处于与 Sérgio Vieira de Mello 讲席/联合国难民署相关的合作生态中。',
+    two: '关于巴伊亚州移民融入的研究于 2025 年在萨拉曼卡大学和 Universidade Portucalense 的学术项目中展示并发表。',
+    three: 'Meu Direito 已提交 CNPq 2026 年青年科学家奖；Porto Seguro 法案提案已向巴伊亚州立法议会正式提交，协议号 2026042048700。',
+    portfolio: '了解研究者', source: '查看开源代码',
+    note: '本项目为独立项目。机构名称仅用于说明既往经历和研究，不代表相关机构对本应用的认可或背书。'
+  },
+  uk: {
+    tag: 'Прикладні дослідження · civic tech · права людини',
+    title: 'Створено на основі польового досвіду та міжнародних досліджень',
+    body: 'Meu Direito задумав і розробив бразильський дослідник та поліглот Kauan Tosta, який володіє вісьмома мовами, щоб перетворити міграційні права на чіткі, багатомовні та перевірювані маршрути дій.',
+    one: 'Два роки керівництва напрямом правового захисту в Centro de Serviço ao Migrante (CSM) в екосистемі, пов’язаній із кафедрою Sérgio Vieira de Mello/УВКБ ООН.',
+    two: 'Дослідження інтеграції мігрантів у Баїї було представлено й опубліковано в академічних ініціативах Університету Саламанки та Universidade Portucalense у 2025 році.',
+    three: 'Meu Direito подано на Премію молодого науковця CNPq 2026; законодавчу пропозицію Porto Seguro офіційно подано до Законодавчої асамблеї Баїї за протоколом № 2026042048700.',
+    portfolio: 'Про дослідника', source: 'Переглянути відкритий код',
+    note: 'Незалежний проєкт. Згадки про установи описують попередній досвід і дослідження та не означають інституційного схвалення застосунку.'
+  }
+};
 const LANGS = [['pt-BR', 'Português'], ['en', 'English'], ['es', 'Español'], ['ar', 'العربية'], ['zh-CN', '简体中文'], ['uk', 'Українська']];
 const LNAME = {}; LANGS.forEach(l => { LNAME[l[0]] = l[1]; });
 const IC = {
@@ -1244,10 +1338,11 @@ class Component extends DCLogic {
 
   renderVals() {
     const s = this.state, t = this.T();
-    const base = { t, ic: IC, isPublic: true, r_home: true, topics: [] };
+    const base = { t, ic: IC, isPublic: true, r_home: true, topics: [], authorityTag: '', authorityTitle: '', authorityBody: '', authorityOne: '', authorityTwo: '', authorityThree: '', authorityPortfolio: '', authoritySource: '', authorityNote: '' };
     if (!s.ready) return base;
     const L = window.MD_LEGAL, E = window.MD_ENGINE, R = window.MD_REPO, M = window.MD_CASES, SRC = L.SRC, PT = window.MD3_I18N['pt-BR'];
     const rn = s.route.name, isStaff = rn.indexOf('s_') === 0 || rn.indexOf('g_') === 0, wide = s.vw >= 960, notPt = s.lang !== 'pt-BR';
+    const authority = AUTHORITY_COPY[s.lang] || AUTHORITY_COPY['pt-BR'];
     const journey = JOURNEY.indexOf(rn) >= 0 && !isStaff;
     const verifiedLine = fmt(t.verified, { d: this.fdate(new Date(2026, 7, 14)) });
     const v = { t, ic: IC, isPublic: !isStaff, isStaff, wide, narrow: !wide, lang: s.lang, notPt, offline: s.offline, liveMsg: s.liveMsg, kbDate: L.V, verifiedLine, pfUnitsUrl: SRC.pfUnidades.url,
@@ -1256,7 +1351,8 @@ class Component extends DCLogic {
       journeyTitle: { start: t.ctaStart, topic: t.topicsT, quiz: t.ctaStart, narr: t.narrT, und: t.undT, result: t.nextStepT, dm: s.dm.ctx ? t.dmPrepT : t.dmT, book: t.bkT }[rn] || '',
       langShort: LNAME[s.lang], langBtnAria: t.language + ': ' + LNAME[s.lang], openLang: () => this.openLayer('sheet', 'lang'), openA11y: () => this.openLayer('sheet', 'a11y'),
       humanGeneric: () => this.openDemand({ topic: 'unsure' }), humanUrgent: () => this.openDemand({ topic: 'violence' }),
-      toast: s.toast, closeLayer: this.closeLayer, closeLabel: t.close
+      toast: s.toast, closeLayer: this.closeLayer, closeLabel: t.close,
+      authorityTag: authority.tag, authorityTitle: authority.title, authorityBody: authority.body, authorityOne: authority.one, authorityTwo: authority.two, authorityThree: authority.three, authorityPortfolio: authority.portfolio, authoritySource: authority.source, authorityNote: authority.note
     };
     ['home', 'start', 'topic', 'quiz', 'narr', 'und', 'result', 'dm', 'sent', 'track', 'case', 'book', 'services', 'help', 'urgent', 'sources', 'privacy', 'demo', 'nf'].forEach(k => { v['r_' + k] = !isStaff && rn === k; });
     if (rn === 'quiz' && !s.flowId) { v.r_quiz = false; v.r_start = true; }
@@ -1537,7 +1633,7 @@ class Component extends DCLogic {
     const tl = this.T(), dir = v.isStaff || s.sheet === 'staffMenu' ? 'ltr' : tl.dir;
     Object.assign(v, { layerOpen: !!(s.sheet || s.dlg), sheetOpen: !!s.sheet, dlgOpen: !!s.dlg, shLang: s.sheet === 'lang', shA11y: s.sheet === 'a11y', shStaffMenu: s.sheet === 'staffMenu',
       sheetLang: s.sheet === 'staffMenu' ? 'pt-BR' : s.lang, sheetDir: dir, sheetTitle: s.sheet === 'lang' ? t.chooseLang : s.sheet === 'a11y' ? t.a11y : 'Menu',
-      shInset: wide ? 'auto' : '0', shBottom: wide ? 'auto' : '0', shTop: wide ? '50%' : 'auto', shTransform: wide ? 'translate(-50%,-50%)' : 'none', shWidth: wide ? 'min(420px,calc(100vw - 32px))' : '100%', shRadius: wide ? '16px' : '20px 20px 0 0',
+      shLeft: wide ? '50%' : '0', shRight: wide ? 'auto' : '0', shBottom: wide ? 'auto' : '0', shTop: wide ? '50%' : 'auto', shTransform: wide ? 'translate(-50%,-50%)' : 'none', shWidth: wide ? 'min(420px,calc(100vw - 32px))' : '100%', shRadius: wide ? '16px' : '20px 20px 0 0',
       langList: LANGS.map(l => ({ code: l[0], name: l[1], dir: l[0] === 'ar' ? 'rtl' : 'ltr', sel: String(s.lang === l[0]), bg: s.lang === l[0] ? '#EEF3FF' : '#fff', bd: s.lang === l[0] ? '#2457E6' : '#E1E6EF', onClick: () => this.setLang(l[0]) })),
       a11yItems: [['big', 'bigText'], ['contrast', 'contrast'], ['motion', 'motion']].map(x => { const on = !!s.a11y[x[0]]; return { label: t[x[1]], pressed: String(on), bg: on ? '#EEF3FF' : '#fff', bd: on ? '#2457E6' : '#E1E6EF', track: on ? '#2457E6' : '#C9D2E0', knob: on ? '19px' : '3px', onClick: () => { const a = Object.assign({}, s.a11y, { [x[0]]: !on }); this.applyA11y(a); this.setState({ a11y: a }); this.savePrefs({ a11y: a }); } }; })
         .concat([{ label: s.speaking ? t.stopListen : t.listen, pressed: String(!!s.speaking), bg: '#fff', bd: '#E1E6EF', track: s.speaking ? '#2457E6' : '#C9D2E0', knob: s.speaking ? '19px' : '3px', onClick: () => { const ss = window.speechSynthesis; if (!ss) return; if (s.speaking) { ss.cancel(); this.setState({ speaking: false }); return; } const el = document.getElementById('md-main'); const u = new SpeechSynthesisUtterance((el ? el.innerText : '').slice(0, 1500)); u.lang = s.lang; u.onend = () => this.setState({ speaking: false }); ss.cancel(); ss.speak(u); this.setState({ speaking: true }); } }]),
