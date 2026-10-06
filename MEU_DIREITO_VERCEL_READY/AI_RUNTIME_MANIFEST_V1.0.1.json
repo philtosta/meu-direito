@@ -1,0 +1,17 @@
+{
+  "app_version": "1.0.1",
+  "provider": "TO_BE_CONFIGURED",
+  "model": "TO_BE_CONFIGURED",
+  "prompt_version": "TO_BE_CONFIGURED",
+  "knowledge_base_version": "kb-2026-08-14",
+  "temperature": null,
+  "top_p": null,
+  "max_tokens": null,
+  "endpoint": "/api/ai/understand",
+  "freeze_timestamp": null,
+  "notes": [
+    "Campos TO_BE_CONFIGURED e null não devem ser preenchidos por suposição.",
+    "No protótipo HTML atual, quando nenhum endpoint está configurado, a chamada usa o runtime de prototipagem do ambiente; isso é aceitável para demonstração e insuficiente para a validação experimental final.",
+    "freeze_timestamp permanece null até a auditoria independente final."
+  ]
+}

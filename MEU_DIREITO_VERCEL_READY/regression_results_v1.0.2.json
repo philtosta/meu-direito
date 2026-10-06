@@ -1,0 +1,79 @@
+{
+  "app_version": "1.0.2",
+  "date": "2026-08-14",
+  "status": "CANDIDATA AO CONGELAMENTO, AGUARDANDO AUDITORIA INDEPENDENTE",
+  "execution_environment": "protótipo HTML sem backend; nenhuma suíte automatizada de fluxo foi executada neste ambiente",
+  "disclaimer": "Nenhum status HTTP, latência, modelo, endpoint ou métrica foi medido. Onde não houve execução, o registro diz NÃO EXECUTADO.",
+  "tests": [
+    {
+      "id": "R01",
+      "scope": "regressão dos quatro fluxos (refúgio, apatridia, CRNM, reunião familiar)",
+      "executed": "revisão estática de código (trace manual das ramificações)",
+      "automated_suite": "NÃO EXECUTADO como suíte automatizada",
+      "notes": "árvore de decisão e merge de variantes revisados linha a linha; sem execução interativa registrada"
+    },
+    {
+      "id": "R02",
+      "scope": "caminhos in_brazil = Não",
+      "executed": "revisão estática de código",
+      "automated_suite": "NÃO EXECUTADO como suíte automatizada",
+      "notes": "regra global outside→consular removida; cada fluxo declara outsidePoints/outsideSummary/outsideBody"
+    },
+    {
+      "id": "R03",
+      "scope": "caminhos in_brazil = Não sei",
+      "executed": "revisão estática de código",
+      "automated_suite": "NÃO EXECUTADO como suíte automatizada",
+      "notes": "órgãos territoriais removidos e whereSummary passa a exigir confirmação de localização"
+    },
+    {
+      "id": "R04",
+      "scope": "refúgio fora do Brasil",
+      "executed": "revisão estática de código",
+      "automated_suite": "NÃO EXECUTADO como suíte automatizada",
+      "notes": "estado refugio_location_blocked substitui integralmente a rota; nenhum ponto consular é apresentado"
+    },
+    {
+      "id": "R05",
+      "scope": "refúgio com fear=Não e sem fundamento suficiente",
+      "executed": "revisão estática de código",
+      "automated_suite": "NÃO EXECUTADO como suíte automatizada",
+      "notes": "fear=Não e fear em branco sem fundamento material resultam em needs_info (REFUGIO_INSUFFICIENT)"
+    },
+    {
+      "id": "R06",
+      "scope": "CRNM via2 com residência válida / inválida / desconhecida",
+      "executed": "revisão estática de código",
+      "automated_suite": "NÃO EXECUTADO como suíte automatizada",
+      "notes": "pergunta res_valid adicionada; no → blocked; unknown → needs_info; yes → rota segue sem afirmar elegibilidade"
+    },
+    {
+      "id": "R07",
+      "scope": "apatridia com residência sim / não / desconhecida",
+      "executed": "revisão estática de código",
+      "automated_suite": "NÃO EXECUTADO como suíte automatizada",
+      "notes": "APATRIDIA_BLOCK sem etapa consular; points reduzidos a DPU"
+    },
+    {
+      "id": "R08",
+      "scope": "reunião familiar com respondente em localização diferente da pessoa beneficiária",
+      "executed": "revisão estática de código",
+      "automated_suite": "NÃO EXECUTADO como suíte automatizada",
+      "notes": "variante passa a depender de benef_loc; pointsFromFlow impede sobrescrita pela localização do respondente"
+    },
+    {
+      "id": "R09",
+      "scope": "parser pós-modelo (validador AI001)",
+      "executed": "NÃO EXECUTADO nesta versão",
+      "automated_suite": "NÃO EXECUTADO",
+      "notes": "validador não foi alterado na V1.0.2; a evidência disponível é a suíte da V1.0.1 (ai_parser_regression_v1.0.1.json) e não é reexecutada aqui"
+    },
+    {
+      "id": "R10",
+      "scope": "persistência local (localStorage)",
+      "executed": "NÃO EXECUTADO",
+      "automated_suite": "NÃO EXECUTADO",
+      "notes": "sem execução registrada neste ambiente; APPV gravado no registro salvo passa a 1.0.2"
+    }
+  ]
+}

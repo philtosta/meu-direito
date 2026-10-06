@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"><style>
+body{margin:0;background:#EAE7E1;font-family:'Public Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#14666B}a:hover{color:#0B1F33}
+*{box-sizing:border-box}
+button{font-family:inherit}
+::-webkit-scrollbar{width:0}
+@media print{body{background:#fff}.no-print{display:none !important}}
+</style></helmet>
+<div style="min-height:100vh;padding:36px 24px 56px;display:flex;flex-direction:column;align-items:center;gap:16px">
+
+<div class="no-print" style="display:flex;align-items:center;gap:12px;max-width:420px;width:100%">
+<img src="assets/logo-meu-direito.png" alt="Meu Direito" style="width:38px;height:38px;object-fit:contain;border-radius:9px">
+<div style="display:flex;flex-direction:column;gap:2px">
+<div style="font-family:'Manrope',sans-serif;font-weight:800;font-size:15px;color:#0B1F33;letter-spacing:-.01em">Meu Direito.IA — protótipo funcional</div>
+<div style="font-size:11.5px;color:rgba(11,31,51,.55)">Triagem determinística + camada generativa · base verificada em 11/08/2026</div>
+</div>
+</div>
+
+<div style="width:414px;background:#0B1F33;border-radius:46px;padding:12px;box-shadow:0 30px 60px -20px rgba(11,31,51,.45),0 0 0 1px rgba(11,31,51,.2)">
+<div style="width:390px;height:844px;background:#F7F6F3;border-radius:35px;overflow:hidden;position:relative;display:flex;flex-direction:column">
+
+<div style="height:44px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 26px;font-size:12.5px;font-weight:700;color:#0B1F33">
+<span>9:41</span>
+<span style="display:flex;gap:5px;align-items:center"><span style="width:16px;height:9px;border:1.4px solid #0B1F33;border-radius:2.5px;display:inline-block;position:relative"><span style="position:absolute;inset:1.5px;background:#0B1F33;border-radius:1px;right:4px"></span></span></span>
+</div>
+
+<div style="flex:1;overflow-y:auto;overflow-x:hidden">
+
+<sc-if value="{{ isLang }}" hint-placeholder-val="{{ true }}">
+<div data-screen-label="01 Idioma" style="padding:34px 24px 40px;display:flex;flex-direction:column;gap:22px">
+<img src="assets/logo-meu-direito.png" alt="Meu Direito" style="width:76px;height:76px;object-fit:contain">
+<div style="display:flex;flex-direction:column;gap:8px">
+<h1 style="margin:0;font-family:'Manrope',sans-serif;font-size:27px;line-height:1.15;font-weight:800;color:#0B1F33;letter-spacing:-.02em">Escolha seu idioma</h1>
+<p style="margin:0;font-size:15px;line-height:1.5;color:rgba(11,31,51,.65)">Choose your language · Elija su idioma · Choisissez votre langue</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<sc-for list="{{ langs }}" as="lang" hint-placeholder-count="4">
+<button onClick="{{ lang.onSelect }}" style="display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;text-align:left;padding:15px 16px;background:#fff;border:1px solid rgba(11,31,51,.10);border-radius:16px;cursor:pointer">
+<span style="display:flex;flex-direction:column;gap:3px">
+<span style="font-family:'Manrope',sans-serif;font-weight:700;font-size:15.5px;color:#0B1F33">{{ lang.name }}</span>
+<span style="font-size:11.5px;color:rgba(11,31,51,.5)">{{ lang.status }}</span>
+</span>
+<span style="font-size:18px;color:#14666B">→</span>
+</button>
+</sc-for>
+</div>
+<p style="margin:0;font-size:11.5px;line-height:1.55;color:rgba(11,31,51,.5)">A base jurídica permanece em português. Traduções automáticas não são tradução oficial e sempre mantêm o link para a fonte original.</p>
+</div>
+</sc-if>
+
+<sc-if value="{{ isPrivacy }}">
+<div data-screen-label="02 Aviso de privacidade" style="padding:26px 24px 40px;display:flex;flex-direction:column;gap:20px">
+<button onClick="{{ goBack }}" style="align-self:flex-start;background:none;border:none;padding:0;font-size:14px;color:#14666B;cursor:pointer;font-weight:600">← Voltar</button>
+<div style="display:flex;flex-direction:column;gap:10px">
+<span style="align-self:flex-start;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#14666B;background:rgba(20,102,107,.09);padding:5px 10px;border-radius:20px">Antes de continuar</span>
+<h1 style="margin:0;font-family:'Manrope',sans-serif;font-size:25px;line-height:1.2;font-weight:800;color:#0B1F33;letter-spacing:-.02em">Você não precisa se identificar</h1>
+</div>
+<div style="display:flex;flex-direction:column;gap:14px;padding:18px;background:#fff;border:1px solid rgba(11,31,51,.10);border-radius:18px">
+<p style="margin:0;font-size:15px;line-height:1.55;color:#0B1F33">Você não precisa informar seu nome, CPF, número de documento ou endereço para usar esta orientação inicial.</p>
+<p style="margin:0;font-size:15px;line-height:1.55;color:rgba(11,31,51,.72)">Evite escrever dados pessoais que não sejam necessários.</p>
+<p style="margin:0;font-size:15px;line-height:1.55;color:rgba(11,31,51,.72)">Suas respostas servem apenas para organizar o caminho indicado nesta tela.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<button onClick="{{ goHome }}" style="width:100%;padding:17px;background:#0B1F33;color:#fff;border:none;border-radius:16px;font-family:'Manrope',sans-serif;font-weight:700;font-size:15.5px;cursor:pointer">Continuar sem identificação</button>
+<button onClick="{{ goPrivacyDetail }}" style="width:100%;padding:15px;background:none;color:#14666B;border:1px solid rgba(20,102,107,.35);border-radius:16px;font-family:'Manrope',sans-serif;font-weight:700;font-size:14.5px;cursor:pointer">Entender como os dados são usados</button>
+</div>
+<p style="margin:0;font-size:11.5px;line-height:1.55;color:rgba(11,31,51,.5)">Projeto independente de pesquisa. Não somos um órgão do governo e não substituímos atendimento jurídico ou decisão de autoridade pública.</p>
+</div>
+</sc-if>
+
+<sc-if value="{{ isPrivacyDetail }}">
+<div data-screen-label="19 Privacidade" style="padding:26px 24px 40px;display:flex;flex-direction:column;gap:18px">
+<button onClick="{{ goBack }}" style="align-self:flex-start;background:none;border:none;padding:0;font-size:14px;color:#14666B;cursor:pointer;font-weight:600">← Voltar</button>
+<h1 style="margin:0;font-family:'Manrope',sans-serif;font-size:24px;line-height:1.2;font-weight:800;color:#0B1F33;letter-spacing:-.02em">Como os dados são usados</h1>
+<sc-for list="{{ privacyItems }}" as="p" hint-placeholder-count="4">
+<div style="display:flex;flex-direction:column;gap:6px;padding:16px;background:#fff;border:1px solid rgba(11,31,51,.10);border-radius:16px">
+<div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:14.5px;color:#0B1F33">{{ p.title }}</div>
+<div style="font-size:14px;line-height:1.55;color:rgba(11,31,51,.7)">{{ p.body }}</div>
+</div>
+</sc-for>
+<div style="padding:16px;background:rgba(192,138,46,.08);border:1px solid rgba(192,138,46,.28);border-radius:16px;display:flex;flex-direction:column;gap:8px">
+<div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:14.5px;color:#0B1F33">Excluir meus dados</div>
+<div style="font-size:13.5px;line-height:1.5;color:rgba(11,31,51,.7)">Se você salvar um plano, pode apagá-lo a qualquer momento. A exclusão remove o registro do banco, não apenas da tela.</div>
+<button onClick="{{ noop }}" style="align-self:flex-start;margin-top:4px;padding:11px 16px;background:#fff;color:#0B1F33;border:1px solid rgba(11,31,51,.2);border-radius:12px;font-weight:700;font-size:13.5px;cursor:pointer">Excluir meus dados</button>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isHome }}">
+<div data-screen-label="05 Home" style="padding:28px 24px 32px;display:flex;flex-direction:column;gap:24px">
+<div style="display:flex;align-items:center;justify-content:space-between">
+<img src="assets/logo-meu-direito.png" alt="Meu Direito" style="width:52px;height:52px;object-fit:contain">
+<div style="display:flex;gap:8px">
+<button onClick="{{ goLang }}" style="padding:8px 12px;background:#fff;border:1px solid rgba(11,31,51,.12);border-radius:12px;font-size:12.5px;font-weight:700;color:#0B1F33;cursor:pointer">{{ langCode }}</button>
+<button onClick="{{ toggleA11y }}" aria-label="Acessibilidade" style="padding:8px 12px;background:#fff;border:1px solid rgba(11,31,51,.12);border-radius:12px;font-size:12.5px;font-weight:700;color:#0B1F33;cursor:pointer">A+</button>
+</div>
+</div>
+<sc-if value="{{ a11yOpen }}">
+<div style="display:flex;flex-wrap:wrap;gap:8px;padding:14px;background:#fff;border:1px solid rgba(11,31,51,.12);border-radius:16px">
+<span style="width:100%;font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:rgba(11,31,51,.5)">Acessibilidade</span>
+<button onClick="{{ noop }}" style="padding:10px 14px;background:#F7F6F3;border:1px solid rgba(11,31,51,.12);border-radius:12px;font-size:13.5px;font-weight:700;color:#0B1F33;cursor:pointer">Aumentar texto</button>
+<button onClick="{{ noop }}" style="padding:10px 14px;background:#F7F6F3;border:1px solid rgba(11,31,51,.12);border-radius:12px;font-size:13.5px;font-weight:700;color:#0B1F33;cursor:pointer">Alto contraste</button>
+<button onClick="{{ noop }}" style="padding:10px 14px;background:#F7F6F3;border:1px solid rgba(11,31,51,.12);border-radius:12px;font-size:13.5px;font-weight:700;color:#0B1F33;cursor:pointer">Reduzir animações</button>
+<button onClick="{{ speakScreen }}" style="padding:10px 14px;background:#F7F6F3;border:1px solid rgba(11,31,51,.12);border-radius:12px;font-size:13.5px;font-weight:700;color:#0B1F33;cursor:pointer">Ouvir esta tela</button>
+</div>
+</sc-if>
+<div style="display:flex;flex-direction:column;gap:12px">
+<h1 style="margin:0;font-family:'Manrope',sans-serif;font-size:30px;line-height:1.12;font-weight:800;color:#0B1F33;letter-spacing:-.025em">Entenda o que fazer.<br>Saiba onde buscar ajuda.</h1>
+<p style="margin:0;font-size:15.5px;line-height:1.55;color:rgba(11,31,51,.68);text-wrap:pretty">Conte o que você precisa resolver. Nós organizamos as informações e mostramos o caminho oficial.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<button onClick="{{ goStart }}" style="width:100%;padding:18px;background:#0B1F33;color:#fff;border:none;border-radius:16px;font-family:'Manrope',sans-serif;font-weight:700;font-size:16px;cursor:pointer">Começar</button>
+<button onClick="{{ goCategories }}" style="width:100%;padding:16px;background:#fff;color:#0B1F33;border:1px solid rgba(11,31,51,.16);border-radius:16px;font-family:'Manrope',sans-serif;font-weight:700;font-size:15px;cursor:pointer">Já sei o que preciso</button>
+</div>
+<button onClick="{{ goUrgent }}" style="display:flex;align-items:center;gap:12px;width:100%;text-align:left;padding:16px;background:rgba(176,42,42,.06);border:1px solid rgba(176,42,42,.3);border-radius:16px;cursor:pointer">
+<span style="flex:none;width:36px;height:36px;border-radius:50%;background:#B02A2A;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;font-family:'Manrope',sans-serif">!</span>
+<span style="display:flex;flex-direction:column;gap:2px">
+<span style="font-family:'Manrope',sans-serif;font-weight:700;font-size:15px;color:#8E1F1F">Preciso de ajuda agora</span>
+<span style="font-size:12.5px;color:rgba(11,31,51,.6)">Risco, violência ou emergência</span>
+</span>
+</button>
+<div style="display:flex;flex-wrap:wrap;gap:8px">
+<button onClick="{{ goSources }}" style="padding:10px 14px;background:none;border:1px solid rgba(11,31,51,.14);border-radius:20px;font-size:13px;font-weight:600;color:#0B1F33;cursor:pointer">Fontes oficiais</button>
+<button onClick="{{ goPrivacyDetail }}" style="padding:10px 14px;background:none;border:1px solid rgba(11,31,51,.14);border-radius:20px;font-size:13px;font-weight:600;color:#0B1F33;cursor:pointer">Privacidade</button>
+<button onClick="{{ goAbout }}" style="padding:10px 14px;background:none;border:1px solid rgba(11,31,51,.14);border-radius:20px;font-size:13px;font-weight:600;color:#0B1F33;cursor:pointer">Como funciona</button>
+</div>
+<p style="margin:0;padding-top:6px;border-top:1px solid rgba(11,31,51,.1);font-size:11.5px;line-height:1.55;color:rgba(11,31,51,.5)">Projeto independente de pesquisa. Não somos um órgão do governo e não substituímos atendimento jurídico ou decisão de autoridade pública.</p>
+</div>
+</sc-if>
+
+<sc-if value="{{ isAbout }}">
+<div data-screen-label="18 Sobre a pesquisa" style="padding:26px 24px 40px;display:flex;flex-direction:column;gap:18px">
+<button onClick="{{ goBack }}" style="align-self:flex-start;background:none;border:none;padding:0;font-size:14px;color:#14666B;cursor:pointer;font-weight:600">← Voltar</button>
+<h1 style="margin:0;font-family:'Manrope',sans-serif;font-size:24px;line-height:1.2;font-weight:800;color:#0B1F33;letter-spacing:-.02em">Como funciona</h1>
+<p style="margin:0;font-size:14.5px;line-height:1.6;color:rgba(11,31,51,.72)">A triagem é determinística: suas respostas percorrem uma árvore de decisão auditável. A camada generativa só entra para entender relato livre, organizar fatos, apontar informações que faltam e simplificar linguagem.</p>
+<div style="display:flex;flex-direction:column;gap:2px">
+<sc-for list="{{ pipeline }}" as="p" hint-placeholder-count="6">
+<div style="display:flex;align-items:center;gap:12px;padding:12px 14px;background:#fff;border:1px solid rgba(11,31,51,.1);border-radius:12px">
+<span style="flex:none;width:22px;height:22px;border-radius:6px;background:rgba(20,102,107,.1);color:#14666B;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800">{{ p.n }}</span>
+<span style="font-size:13.5px;font-weight:600;color:#0B1F33">{{ p.label }}</span>
+</div>
+</sc-for>
+</div>
+<div style="padding:16px;background:#fff;border:1px solid rgba(11,31,51,.1);border-radius:16px;display:flex;flex-direction:column;gap:10px">
+<div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:14.5px;color:#0B1F33">O que a IA não pode fazer</div>
+<sc-for list="{{ aiCannot }}" as="c" hint-placeholder-count="5">
+<div style="display:flex;gap:8px;font-size:13.5px;line-height:1.5;color:rgba(11,31,51,.72)"><span style="color:#B02A2A;font-weight:800">×</span><span>{{ c }}</span></div>
+</sc-for>
+</div>
+<div style="font-size:11.5px;line-height:1.6;color:rgba(11,31,51,.5)">Versão do app 0.1.0 · Base jurídica kb-2026-08-11 · Prompt mdia-triage-v1 · Infraestrutura do protótipo custeada pelo pesquisador.</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isStart }}">
+<div data-screen-label="06a Como quer começar" style="padding:26px 24px 40px;display:flex;flex-direction:column;gap:20px">
+<button onClick="{{ goHome }}" style="align-self:flex-start;background:none;border:none;padding:0;font-size:14px;color:#14666B;cursor:pointer;font-weight:600">← Voltar</button>
+<h1 style="margin:0;font-family:'Manrope',sans-serif;font-size:25px;line-height:1.18;font-weight:800;color:#0B1F33;letter-spacing:-.02em">Como você prefere começar?</h1>
+<button onClick="{{ goCategories }}" style="display:flex;flex-direction:column;gap:6px;width:100%;text-align:left;padding:20px;background:#fff;border:1px solid rgba(11,31,51,.12);border-radius:18px;cursor:pointer">
+<span style="font-family:'Manrope',sans-serif;font-weight:700;font-size:17px;color:#0B1F33">Escolher um assunto</span>
+<span style="font-size:14px;line-height:1.5;color:rgba(11,31,51,.62)">Você vê uma lista de situações e responde perguntas curtas.</span>
+</button>
+<button onClick="{{ goNarrative }}" style="display:flex;flex-direction:column;gap:6px;width:100%;text-align:left;padding:20px;background:#0B1F33;border:none;border-radius:18px;cursor:pointer">
+<span style="font-family:'Manrope',sans-serif;font-weight:700;font-size:17px;color:#fff">Contar com minhas palavras</span>
+<span style="font-size:14px;line-height:1.5;color:rgba(255,255,255,.72)">Você escreve ou fala o que aconteceu e nós organizamos.</span>
+</button>
+</div>
+</sc-if>
+
+<sc-if value="{{ isCategories }}">
+<div data-screen-label="06 Categorias" style="padding:26px 20px 40px;display:flex;flex-direction:column;gap:18px">
+<button onClick="{{ goHome }}" style="align-self:flex-start;margin-left:4px;background:none;border:none;padding:0;font-size:14px;color:#14666B;cursor:pointer;font-weight:600">← Voltar</button>
+<h1 style="margin:0 4px;font-family:'Manrope',sans-serif;font-size:25px;line-height:1.18;font-weight:800;color:#0B1F33;letter-spacing:-.02em">O que você precisa resolver hoje?</h1>
+<div style="display:flex;flex-direction:column;gap:9px">
+<sc-for list="{{ categories }}" as="cat" hint-placeholder-count="12">
+<button onClick="{{ cat.onSelect }}" style="display:flex;gap:13px;align-items:flex-start;width:100%;text-align:left;padding:15px;background:#fff;border:1px solid rgba(11,31,51,.1);border-radius:16px;cursor:pointer">
+<span style="flex:none;width:38px;height:38px;border-radius:11px;background:rgba(20,102,107,.09);display:flex;align-items:center;justify-content:center;font-family:'Manrope',sans-serif;font-weight:800;font-size:14px;color:#14666B">{{ cat.tag }}</span>
+<span style="display:flex;flex-direction:column;gap:3px;flex:1">
+<span style="font-family:'Manrope',sans-serif;font-weight:700;font-size:15.5px;line-height:1.25;color:#0B1F33">{{ cat.title }}</span>
+<span style="font-size:13px;line-height:1.4;color:rgba(11,31,51,.6)">{{ cat.sub }}</span>
+</span>
+</button>
+</sc-for>
+</div>
+<button onClick="{{ goUrgent }}" style="display:flex;align-items:center;gap:12px;width:100%;text-align:left;margin-top:6px;padding:16px;background:rgba(176,42,42,.06);border:1px solid rgba(176,42,42,.3);border-radius:16px;cursor:pointer">
+<span style="flex:none;width:34px;height:34px;border-radius:50%;background:#B02A2A;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:17px;font-family:'Manrope',sans-serif">!</span>
+<span style="font-family:'Manrope',sans-serif;font-weight:700;font-size:15px;color:#8E1F1F">Preciso de ajuda agora</span>
+</button>
+</div>
+</sc-if>
+
+<sc-if value="{{ isQuiz }}">
+<div data-screen-label="07 Quiz" style="min-height:100%;display:flex;flex-direction:column">
+<div style="padding:20px 24px 14px;display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;align-items:center;justify-content:space-between">
+<button onClick="{{ quizBack }}" style="background:none;border:none;padding:0;font-size:14px;color:#14666B;cursor:pointer;font-weight:600">← Voltar</button>
+<span style="font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:rgba(11,31,51,.45)">{{ quizCounter }}</span>
+</div>
+<div style="height:4px;background:rgba(11,31,51,.1);border-radius:4px;overflow:hidden">
+<div style="height:100%;background:#14666B;border-radius:4px;transition:width .3s ease;width:{{ quizPct }}%"></div>
+</div>
+</div>
+<div style="flex:1;padding:12px 24px 34px;display:flex;flex-direction:column;gap:20px">
+<div style="display:flex;flex-direction:column;gap:8px">
+<h1 style="margin:0;font-family:'Manrope',sans-serif;font-size:24px;line-height:1.22;font-weight:800;color:#0B1F33;letter-spacing:-.02em;text-wrap:pretty">{{ quizTitle }}</h1>
+<p style="margin:0;font-size:14px;line-height:1.5;color:rgba(11,31,51,.6)">{{ quizHelp }}</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:9px">
+<sc-for list="{{ quizOptions }}" as="opt" hint-placeholder-count="4">
+<button onClick="{{ opt.onSelect }}" style="display:flex;align-items:center;gap:12px;width:100%;text-align:left;padding:16px;background:{{ opt.bg }};border:1.5px solid {{ opt.border }};border-radius:16px;cursor:pointer">
+<span style="flex:none;width:20px;height:20px;border-radius:{{ opt.markRadius }};border:1.5px solid {{ opt.markBorder }};background:{{ opt.markBg }};display:flex;align-items:center;justify-content:center;font-size:11px;color:#fff;font-weight:800">{{ opt.mark }}</span>
+<span style="font-size:15.5px;line-height:1.35;font-weight:600;color:#0B1F33">{{ opt.label }}</span>
+</button>
+</sc-for>
+</div>
+<sc-if value="{{ quizMulti }}">
+<button onClick="{{ quizConfirm }}" style="width:100%;padding:17px;background:#0B1F33;color:#fff;border:none;border-radius:16px;font-family:'Manrope',sans-serif;font-weight:700;font-size:15.5px;cursor:pointer">Continuar</button>
+</sc-if>
+<div style="margin-top:auto;display:flex;flex-direction:column;gap:8px">
+<button onClick="{{ quizSkip }}" style="align-self:flex-start;background:none;border:none;padding:0;font-size:13.5px;font-weight:600;color:rgba(11,31,51,.5);cursor:pointer;text-decoration:underline">Prefiro não responder</button>
+<p style="margin:0;font-size:11.5px;line-height:1.5;color:rgba(11,31,51,.45)">Perguntamos apenas o que muda o caminho indicado. Não pedimos CPF, passaporte, número de documento nem endereço.</p>
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isNarrative }}">
+<div data-screen-label="08 Relato livre" style="padding:22px 24px 34px;display:flex;flex-direction:column;gap:16px;min-height:100%">
+<button onClick="{{ goBack }}" style="align-self:flex-start;background:none;border:none;padding:0;font-size:14px;color:#14666B;cursor:pointer;font-weight:600">← Voltar</button>
+<div style="display:flex;flex-direction:column;gap:8px">
+<h1 style="margin:0;font-family:'Manrope',sans-serif;font-size:24px;line-height:1.2;font-weight:800;color:#0B1F33;letter-spacing:-.02em">Conte com suas palavras</h1>
+<p style="margin:0;font-size:14.5px;line-height:1.55;color:rgba(11,31,51,.65)">Escreva o que está acontecendo. Não precisa usar termos jurídicos e não precisa escrever seu nome.</p>
+</div>
+<textarea value="{{ narrative }}" onChange="{{ onNarrative }}" placeholder="Ex: cheguei ao Brasil no ano passado e não consigo voltar para o meu país…" style="width:100%;min-height:170px;padding:16px;background:#fff;border:1px solid rgba(11,31,51,.14);border-radius:16px;font-family:'Public Sans',sans-serif;font-size:15.5px;line-height:1.55;color:#0B1F33;resize:vertical"></textarea>
+<div style="display:flex;gap:9px">
+<button onClick="{{ toggleVoice }}" style="flex:1;display:flex;align-items:center;justify-content:center;gap:8px;padding:14px;background:#fff;border:1px solid rgba(11,31,51,.16);border-radius:14px;font-family:'Manrope',sans-serif;font-weight:700;font-size:14px;color:#0B1F33;cursor:pointer">
+<span style="width:9px;height:9px;border-radius:50%;background:{{ micColor }};display:inline-block"></span>{{ micLabel }}
+</button>
+<button onClick="{{ speakScreen }}" style="flex:none;padding:14px 16px;background:#fff;border:1px solid rgba(11,31,51,.16);border-radius:14px;font-family:'Manrope',sans-serif;font-weight:700;font-size:14px;color:#0B1F33;cursor:pointer">Ouvir</button>
+</div>
+<sc-if value="{{ voiceUnavailable }}">
+<div style="padding:14px;background:rgba(192,138,46,.08);border:1px solid rgba(192,138,46,.3);border-radius:14px;font-size:13.5px;line-height:1.5;color:rgba(11,31,51,.75)">Seu navegador não oferece esta função. Você pode continuar escrevendo.</div>
+</sc-if>
+<sc-if value="{{ aiOff }}">
+<div style="padding:14px;background:#fff;border:1px dashed rgba(11,31,51,.25);border-radius:14px;display:flex;flex-direction:column;gap:8px">
+<div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:14px;color:#0B1F33">Recurso de IA não configurado nesta instalação.</div>
+<div style="font-size:13.5px;line-height:1.5;color:rgba(11,31,51,.65)">A triagem por perguntas continua funcionando normalmente.</div>
+</div>
+</sc-if>
+<div style="margin-top:auto;display:flex;flex-direction:column;gap:10px">
+<button onClick="{{ submitNarrative }}" style="width:100%;padding:17px;background:#0B1F33;color:#fff;border:none;border-radius:16px;font-family:'Manrope',sans-serif;font-weight:700;font-size:15.5px;cursor:pointer">{{ narrativeCta }}</button>
+<button onClick="{{ goCategories }}" style="width:100%;padding:15px;background:none;color:#14666B;border:1px solid rgba(20,102,107,.3);border-radius:16px;font-family:'Manrope',sans-serif;font-weight:700;font-size:14.5px;cursor:pointer">Prefiro escolher um assunto</button>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isUnderstood }}">
+<div data-screen-label="09 O que entendemos" style="padding:22px 24px 34px;display:flex;flex-direction:column;gap:18px">
+<button onClick="{{ goBack }}" style="align-self:flex-start;background:none;border:none;padding:0;font-size:14px;color:#14666B;cursor:pointer;font-weight:600">← Voltar</button>
+<div style="display:flex;flex-direction:column;gap:8px">
+<span style="align-self:flex-start;font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#C08A2E;background:rgba(192,138,46,.12);padding:5px 10px;border-radius:20px">Dado sintético para demonstração</span>
+<h1 style="margin:0;font-family:'Manrope',sans-serif;font-size:24px;line-height:1.2;font-weight:800;color:#0B1F33;letter-spacing:-.02em">Confira o que entendemos</h1>
+</div>
+<div style="padding:16px;background:#fff;border:1px solid rgba(11,31,51,.1);border-radius:16px;display:flex;flex-direction:column;gap:8px">
+<div style="font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:rgba(11,31,51,.45)">O que você contou</div>
+<div style="font-size:14.5px;line-height:1.6;color:rgba(11,31,51,.8);font-style:italic">{{ narrativeShown }}</div>
+</div>
+<div style="padding:16px;background:#fff;border:1px solid rgba(20,102,107,.3);border-radius:16px;display:flex;flex-direction:column;gap:10px">
+<div style="font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#14666B">O que o sistema entendeu</div>
+<sc-for list="{{ understoodFacts }}" as="f" hint-placeholder-count="3">
+<div style="display:flex;gap:9px;font-size:14.5px;line-height:1.5;color:#0B1F33"><span style="color:#14666B;font-weight:800">{{ f.n }}</span><span>{{ f.text }}</span></div>
+</sc-for>
+<div style="font-size:12px;line-height:1.5;color:rgba(11,31,51,.55);padding-top:6px;border-top:1px solid rgba(11,31,51,.08)">Só listamos o que você relatou. O sistema não acrescenta fatos nem conclui direitos a partir do relato.</div>
+</div>
+<div style="padding:16px;background:rgba(192,138,46,.07);border:1px solid rgba(192,138,46,.3);border-radius:16px;display:flex;flex-direction:column;gap:10px">
+<div style="font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#8A5F14">O que ainda precisamos saber</div>
+<sc-for list="{{ missingInfo }}" as="m" hint-placeholder-count="2">
+<div style="display:flex;flex-direction:column;gap:3px">
+<div style="font-size:14.5px;font-weight:700;color:#0B1F33">{{ m.question }}</div>
+<div style="font-size:12.5px;line-height:1.45;color:rgba(11,31,51,.6)">{{ m.why }}</div>
+</div>
+</sc-for>
+</div>
+<button onClick="{{ startRefugioQuiz }}" style="width:100%;padding:17px;background:#0B1F33;color:#fff;border:none;border-radius:16px;font-family:'Manrope',sans-serif;font-weight:700;font-size:15.5px;cursor:pointer">Responder as perguntas que faltam</button>
+</div>
+</sc-if>
+
+<sc-if value="{{ isUrgent }}">
+<div data-screen-label="10 Urgência" style="padding:22px 24px 34px;display:flex;flex-direction:column;gap:18px;background:#FCF6F5;min-height:100%">
+<button onClick="{{ goHome }}" style="align-self:flex-start;background:none;border:none;padding:0;font-size:14px;color:#8E1F1F;cursor:pointer;font-weight:600">← Voltar</button>
+<div style="display:flex;flex-direction:column;gap:10px">
+<span style="align-self:flex-start;font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#fff;background:#B02A2A;padding:6px 11px;border-radius:20px">Atendimento humano</span>
+<h1 style="margin:0;font-family:'Manrope',sans-serif;font-size:25px;line-height:1.18;font-weight:800;color:#0B1F33;letter-spacing:-.02em">Se você está em perigo agora, procure ajuda humana</h1>
+</div>
+<div style="display:flex;flex-direction:column;gap:9px">
+<sc-for list="{{ emergency }}" as="e" hint-placeholder-count="4">
+<div style="padding:16px;background:#fff;border:1px solid rgba(176,42,42,.22);border-radius:16px;display:flex;flex-direction:column;gap:10px">
+<div style="display:flex;align-items:baseline;gap:10px">
+<span style="font-family:'Manrope',sans-serif;font-weight:800;font-size:24px;color:#B02A2A;letter-spacing:-.02em">{{ e.number }}</span>
+<span style="font-family:'Manrope',sans-serif;font-weight:700;font-size:14.5px;color:#0B1F33">{{ e.name }}</span>
+</div>
+<div style="font-size:13.5px;line-height:1.5;color:rgba(11,31,51,.68)">{{ e.when }}</div>
+<div style="display:flex;gap:8px;flex-wrap:wrap">
+<a href="{{ e.tel }}" style="padding:11px 15px;background:#B02A2A;color:#fff;border-radius:12px;font-weight:700;font-size:13.5px;text-decoration:none">Ligar {{ e.number }}</a>
+<a href="{{ e.url }}" target="_blank" rel="noopener noreferrer" style="padding:11px 15px;background:#fff;color:#0B1F33;border:1px solid rgba(11,31,51,.18);border-radius:12px;font-weight:700;font-size:13.5px;text-decoration:none">Fonte oficial</a>
+</div>
+</div>
+</sc-for>
+</div>
+<div style="padding:15px;background:#fff;border:1px dashed rgba(11,31,51,.25);border-radius:14px;font-size:13px;line-height:1.55;color:rgba(11,31,51,.7)">Este aplicativo não monitora sua emergência e não substitui serviços de emergência.</div>
+<div style="padding:16px;background:#0B1F33;border-radius:16px;display:flex;flex-direction:column;gap:10px">
+<div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:15px;color:#fff">Atendimento jurídico gratuito</div>
+<div style="font-size:13.5px;line-height:1.5;color:rgba(255,255,255,.72)">A Defensoria Pública da União atende pessoas migrantes, solicitantes de refúgio e apátridas gratuitamente.</div>
+<a href="https://direitoshumanos.dpu.def.br/onde-nos-encontrar/" target="_blank" rel="noopener noreferrer" style="align-self:flex-start;padding:11px 15px;background:#fff;color:#0B1F33;border-radius:12px;font-weight:700;font-size:13.5px;text-decoration:none">Ver onde encontrar a DPU</a>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isResult }}">
+<div data-screen-label="11 Resultado" style="padding:22px 24px 36px;display:flex;flex-direction:column;gap:18px">
+<div style="display:flex;align-items:center;justify-content:space-between">
+<button onClick="{{ goHome }}" style="background:none;border:none;padding:0;font-size:14px;color:#14666B;cursor:pointer;font-weight:600">← Início</button>
+<button onClick="{{ speakScreen }}" style="padding:8px 12px;background:#fff;border:1px solid rgba(11,31,51,.14);border-radius:12px;font-size:12.5px;font-weight:700;color:#0B1F33;cursor:pointer">Ouvir esta tela</button>
+</div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<div style="display:flex;flex-wrap:wrap;gap:6px">
+<span style="font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#14666B;background:rgba(20,102,107,.1);padding:6px 11px;border-radius:20px">Orientação inicial</span>
+<span style="font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:{{ certaintyColor }};background:{{ certaintyBg }};padding:6px 11px;border-radius:20px">{{ certaintyLabel }}</span>
+</div>
+<h1 style="margin:0;font-family:'Manrope',sans-serif;font-size:23px;line-height:1.22;font-weight:800;color:#0B1F33;letter-spacing:-.02em;text-wrap:pretty">Pelo que você contou, este parece ser o caminho mais adequado.</h1>
+<div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:16.5px;color:#14666B">{{ flowTitle }}</div>
+</div>
+
+<sc-if value="{{ escalation }}">
+<div style="padding:16px;background:rgba(176,42,42,.06);border:1px solid rgba(176,42,42,.3);border-radius:16px;display:flex;flex-direction:column;gap:9px">
+<div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:14.5px;color:#8E1F1F">Situação que merece análise humana</div>
+<div style="font-size:13.5px;line-height:1.55;color:rgba(11,31,51,.75)">{{ escalationReason }}</div>
+<button onClick="{{ goUrgent }}" style="align-self:flex-start;padding:11px 15px;background:#B02A2A;color:#fff;border:none;border-radius:12px;font-weight:700;font-size:13.5px;cursor:pointer">Ver onde buscar ajuda humana</button>
+</div>
+</sc-if>
+
+<div style="padding:18px;background:#fff;border:1px solid rgba(11,31,51,.1);border-radius:18px;display:flex;flex-direction:column;gap:11px">
+<div style="font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:rgba(11,31,51,.45)">1 · O que entendemos</div>
+<sc-for list="{{ facts }}" as="f" hint-placeholder-count="3">
+<div style="display:flex;gap:9px;font-size:14.5px;line-height:1.5;color:#0B1F33"><span style="flex:none;width:5px;height:5px;border-radius:50%;background:#14666B;margin-top:8px"></span><span>{{ f }}</span></div>
+</sc-for>
+</div>
+
+<div style="padding:18px;background:#fff;border:1px solid rgba(11,31,51,.1);border-radius:18px;display:flex;flex-direction:column;gap:10px">
+<div style="font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:rgba(11,31,51,.45)">2 · O que isso pode significar</div>
+<p style="margin:0;font-size:15px;line-height:1.6;color:#0B1F33;text-wrap:pretty">{{ meaning }}</p>
+<div style="font-size:12px;line-height:1.5;color:rgba(11,31,51,.55)">Este aplicativo não reconhece ninguém como pessoa refugiada ou apátrida. Quem decide é a autoridade competente.</div>
+</div>
+
+<div style="padding:18px;background:#fff;border:1px solid rgba(11,31,51,.1);border-radius:18px;display:flex;flex-direction:column;gap:14px">
+<div style="font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:rgba(11,31,51,.45)">3 · O que fazer agora</div>
+<sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
+<div style="display:flex;gap:12px">
+<span style="flex:none;width:26px;height:26px;border-radius:9px;background:#0B1F33;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Manrope',sans-serif;font-weight:800;font-size:12.5px">{{ s.n }}</span>
+<div style="display:flex;flex-direction:column;gap:5px;flex:1">
+<div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:15px;line-height:1.3;color:#0B1F33">{{ s.title }}</div>
+<div style="font-size:13.5px;line-height:1.55;color:rgba(11,31,51,.68)">{{ s.desc }}</div>
+<a href="{{ s.url }}" target="_blank" rel="noopener noreferrer" style="align-self:flex-start;font-size:11.5px;font-weight:700;color:#14666B;background:rgba(20,102,107,.09);padding:5px 9px;border-radius:8px;text-decoration:none">Fonte oficial · {{ s.org }}</a>
+</div>
+</div>
+</sc-for>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:9px">
+<button onClick="{{ goDocs }}" style="display:flex;align-items:center;justify-content:space-between;width:100%;padding:17px;background:#fff;border:1px solid rgba(11,31,51,.12);border-radius:16px;cursor:pointer">
+<span style="display:flex;flex-direction:column;gap:3px;text-align:left"><span style="font-family:'Manrope',sans-serif;font-weight:700;font-size:15px;color:#0B1F33">4 · Documentos</span><span style="font-size:12.5px;color:rgba(11,31,51,.6)">{{ docsSummary }}</span></span>
+<span style="font-size:18px;color:#14666B">→</span>
+</button>
+<button onClick="{{ goCosts }}" style="display:flex;align-items:center;justify-content:space-between;width:100%;padding:17px;background:#fff;border:1px solid rgba(11,31,51,.12);border-radius:16px;cursor:pointer">
+<span style="display:flex;flex-direction:column;gap:3px;text-align:left"><span style="font-family:'Manrope',sans-serif;font-weight:700;font-size:15px;color:#0B1F33">5 · Quanto custa</span><span style="font-size:12.5px;color:rgba(11,31,51,.6)">{{ costsSummary }}</span></span>
+<span style="font-size:18px;color:#14666B">→</span>
+</button>
+<button onClick="{{ goWhere }}" style="display:flex;align-items:center;justify-content:space-between;width:100%;padding:17px;background:#fff;border:1px solid rgba(11,31,51,.12);border-radius:16px;cursor:pointer">
+<span style="display:flex;flex-direction:column;gap:3px;text-align:left"><span style="font-family:'Manrope',sans-serif;font-weight:700;font-size:15px;color:#0B1F33">6 · Onde fazer</span><span style="font-size:12.5px;color:rgba(11,31,51,.6)">{{ whereSummary }}</span></span>
+<span style="font-size:18px;color:#14666B">→</span>
+</button>
+<button onClick="{{ goSources }}" style="display:flex;align-items:center;justify-content:space-between;width:100%;padding:17px;background:#fff;border:1px solid rgba(11,31,51,.12);border-radius:16px;cursor:pointer">
+<span style="display:flex;flex-direction:column;gap:3px;text-align:left"><span style="font-family:'Manrope',sans-serif;font-weight:700;font-size:15px;color:#0B1F33">7 · Fontes oficiais</span><span style="font-size:12.5px;color:rgba(11,31,51,.6)">{{ sourcesSummary }}</span></span>
+<span style="font-size:18px;color:#14666B">→</span>
+</button>
+</div>
+
+<div style="padding:18px;background:#fff;border:1px solid rgba(11,31,51,.1);border-radius:18px;display:flex;flex-direction:column;gap:12px">
+<div style="font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:rgba(11,31,51,.45)">8 · Se algo der errado</div>
+<sc-for list="{{ fallbacks }}" as="w" hint-placeholder-count="3">
+<div style="display:flex;flex-direction:column;gap:4px">
+<div style="font-size:14.5px;font-weight:700;color:#0B1F33">{{ w.title }}</div>
+<div style="font-size:13.5px;line-height:1.55;color:rgba(11,31,51,.68)">{{ w.body }}</div>
+</div>
+</sc-for>
+</div>
+
+<button onClick="{{ goPlan }}" style="width:100%;padding:18px;background:#0B1F33;color:#fff;border:none;border-radius:16px;font-family:'Manrope',sans-serif;font-weight:700;font-size:15.5px;cursor:pointer">Ver meu plano de próximos passos</button>
+<p style="margin:0;font-size:11.5px;line-height:1.55;color:rgba(11,31,51,.5)">Fontes e procedimentos podem mudar. Confira o link oficial antes de agir.</p>
+</div>
+</sc-if>
+
+<sc-if value="{{ isDocs }}">
+<div data-screen-label="13 Documentos" style="padding:22px 24px 36px;display:flex;flex-direction:column;gap:18px">
+<button onClick="{{ goResult }}" style="align-self:flex-start;background:none;border:none;padding:0;font-size:14px;color:#14666B;cursor:pointer;font-weight:600">← Meu caminho</button>
+<div style="display:flex;flex-direction:column;gap:8px">
+<h1 style="margin:0;font-family:'Manrope',sans-serif;font-size:24px;line-height:1.2;font-weight:800;color:#0B1F33;letter-spacing:-.02em">Documentos</h1>
+<p style="margin:0;font-size:14px;line-height:1.55;color:rgba(11,31,51,.65)">Marque o que você já tem. Só listamos documentos indicados pela fonte oficial.</p>
+</div>
+<sc-for list="{{ docGroups }}" as="g" hint-placeholder-count="3">
+<div style="display:flex;flex-direction:column;gap:9px">
+<div style="display:flex;align-items:center;gap:8px">
+<span style="font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:{{ g.color }}">{{ g.label }}</span>
+<span style="flex:1;height:1px;background:rgba(11,31,51,.1)"></span>
+</div>
+<sc-for list="{{ g.items }}" as="d" hint-placeholder-count="3">
+<div style="padding:15px;background:#fff;border:1px solid rgba(11,31,51,.1);border-radius:16px;display:flex;flex-direction:column;gap:10px">
+<div style="display:flex;gap:11px;align-items:flex-start">
+<button onClick="{{ d.onCycle }}" aria-label="Alterar estado" style="flex:none;width:26px;height:26px;border-radius:8px;border:1.5px solid {{ d.markBorder }};background:{{ d.markBg }};color:#fff;font-size:13px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center">{{ d.mark }}</button>
+<div style="display:flex;flex-direction:column;gap:4px;flex:1">
+<div style="font-size:14.5px;font-weight:700;line-height:1.35;color:#0B1F33">{{ d.name }}</div>
+<div style="font-size:12.5px;line-height:1.45;color:rgba(11,31,51,.6)">{{ d.condition }}</div>
+<button onClick="{{ d.onExplain }}" style="align-self:flex-start;background:none;border:none;padding:0;font-size:12.5px;font-weight:700;color:#14666B;cursor:pointer;text-decoration:underline">Não sei o que é</button>
+</div>
+<span style="flex:none;font-size:11px;font-weight:700;color:{{ d.stateColor }}">{{ d.stateLabel }}</span>
+</div>
+<sc-if value="{{ d.explainOpen }}">
+<div style="padding:12px;background:#F7F6F3;border-radius:12px;font-size:13px;line-height:1.55;color:rgba(11,31,51,.75)">{{ d.explain }}</div>
+</sc-if>
+<a href="{{ d.url }}" target="_blank" rel="noopener noreferrer" style="align-self:flex-start;font-size:11px;font-weight:700;color:#14666B;background:rgba(20,102,107,.09);padding:5px 9px;border-radius:8px;text-decoration:none">Fonte oficial · verificado em 11/08/2026</a>
+</div>
+</sc-for>
+</div>
+</sc-for>
+<div style="padding:15px;background:rgba(192,138,46,.07);border:1px solid rgba(192,138,46,.28);border-radius:14px;font-size:13px;line-height:1.55;color:rgba(11,31,51,.75)">Não existe uma regra única para apostilamento, legalização ou tradução juramentada. Só mostramos essas exigências quando a fonte oficial do seu caso as indica.</div>
+<button onClick="{{ goResult }}" style="width:100%;padding:17px;background:#0B1F33;color:#fff;border:none;border-radius:16px;font-family:'Manrope',sans-serif;font-weight:700;font-size:15.5px;cursor:pointer">Voltar ao meu caminho</button>
+</div>
+</sc-if>
+
+<sc-if value="{{ isCosts }}">
+<div data-screen-label="14 Custos" style="padding:22px 24px 36px;display:flex;flex-direction:column;gap:18px">
+<button onClick="{{ goResult }}" style="align-self:flex-start;background:none;border:none;padding:0;font-size:14px;color:#14666B;cursor:pointer;font-weight:600">← Meu caminho</button>
+<h1 style="margin:0;font-family:'Manrope',sans-serif;font-size:24px;line-height:1.2;font-weight:800;color:#0B1F33;letter-spacing:-.02em">Quanto custa</h1>
+<sc-for list="{{ costs }}" as="c" hint-placeholder-count="2">
+<div style="padding:18px;background:#fff;border:1px solid rgba(11,31,51,.1);border-radius:18px;display:flex;flex-direction:column;gap:10px">
+<div style="font-size:14.5px;font-weight:700;line-height:1.35;color:#0B1F33">{{ c.label }}</div>
+<div style="font-family:'Manrope',sans-serif;font-weight:800;font-size:24px;letter-spacing:-.02em;color:{{ c.valueColor }}">{{ c.value }}</div>
+<div style="font-size:13.5px;line-height:1.55;color:rgba(11,31,51,.68)">{{ c.note }}</div>
+<sc-if value="{{ c.waiver }}">
+<div style="padding:12px;background:rgba(20,102,107,.07);border-radius:12px;font-size:13px;line-height:1.5;color:#0B1F33">Em algumas situações, você pode não precisar pagar esta taxa. Confira as hipóteses de isenção na página oficial de taxas.</div>
+</sc-if>
+<a href="{{ c.url }}" target="_blank" rel="noopener noreferrer" style="align-self:flex-start;font-size:11px;font-weight:700;color:#14666B;background:rgba(20,102,107,.09);padding:5px 9px;border-radius:8px;text-decoration:none">Fonte oficial · {{ c.org }} · verificado em 11/08/2026</a>
+</div>
+</sc-for>
+<div style="padding:15px;background:#fff;border:1px dashed rgba(11,31,51,.25);border-radius:14px;font-size:13px;line-height:1.55;color:rgba(11,31,51,.7)">Valores e taxas podem ser alterados pelo órgão responsável. Confirme na página oficial antes de pagar. Nunca pague a intermediários para obter estes serviços.</div>
+<button onClick="{{ goResult }}" style="width:100%;padding:17px;background:#0B1F33;color:#fff;border:none;border-radius:16px;font-family:'Manrope',sans-serif;font-weight:700;font-size:15.5px;cursor:pointer">Voltar ao meu caminho</button>
+</div>
+</sc-if>
+
+<sc-if value="{{ isWhere }}">
+<div data-screen-label="15 Órgão competente" style="padding:22px 24px 36px;display:flex;flex-direction:column;gap:18px">
+<button onClick="{{ goResult }}" style="align-self:flex-start;background:none;border:none;padding:0;font-size:14px;color:#14666B;cursor:pointer;font-weight:600">← Meu caminho</button>
+<h1 style="margin:0;font-family:'Manrope',sans-serif;font-size:24px;line-height:1.2;font-weight:800;color:#0B1F33;letter-spacing:-.02em">Onde fazer</h1>
+<sc-for list="{{ points }}" as="p" hint-placeholder-count="2">
+<div style="padding:18px;background:#fff;border:1px solid rgba(11,31,51,.1);border-radius:18px;display:flex;flex-direction:column;gap:12px">
+<div style="display:flex flex-direction:column;flex-direction:column;gap:4px">
+<div style="font-family:'Manrope',sans-serif;font-weight:800;font-size:16.5px;line-height:1.25;color:#0B1F33;letter-spacing:-.01em">{{ p.name }}</div>
+<div style="font-size:13px;line-height:1.45;color:#14666B;font-weight:600">{{ p.role }}</div>
+</div>
+<sc-for list="{{ p.rows }}" as="r" hint-placeholder-count="4">
+<div style="display:flex;gap:10px;font-size:13.5px;line-height:1.5">
+<span style="flex:none;width:66px;font-weight:700;color:rgba(11,31,51,.45);font-size:11px;text-transform:uppercase;letter-spacing:.06em;padding-top:2px">{{ r.k }}</span>
+<span style="color:#0B1F33">{{ r.v }}</span>
+</div>
+</sc-for>
+<div style="display:flex;flex-wrap:wrap;gap:8px">
+<sc-for list="{{ p.actions }}" as="a" hint-placeholder-count="3">
+<a href="{{ a.href }}" target="_blank" rel="noopener noreferrer" style="padding:11px 14px;background:#0B1F33;color:#fff;border-radius:12px;font-weight:700;font-size:13px;text-decoration:none">{{ a.label }}</a>
+</sc-for>
+</div>
+<a href="{{ p.sourceUrl }}" target="_blank" rel="noopener noreferrer" style="align-self:flex-start;font-size:11px;font-weight:700;color:#14666B;background:rgba(20,102,107,.09);padding:5px 9px;border-radius:8px;text-decoration:none">Fonte oficial · {{ p.org }} · verificado em 11/08/2026</a>
+<div style="padding:12px;background:rgba(192,138,46,.07);border-radius:12px;font-size:12.5px;line-height:1.5;color:rgba(11,31,51,.72)">Confirme antes de se deslocar. Informações operacionais podem ser alteradas pelo órgão responsável.</div>
+</div>
+</sc-for>
+<sc-if value="{{ cityUnmapped }}">
+<div style="padding:16px;background:#fff;border:1px dashed rgba(11,31,51,.25);border-radius:16px;font-size:13.5px;line-height:1.55;color:rgba(11,31,51,.72)">A orientação federal continua valendo, mas esta versão da pesquisa mapeou contatos locais apenas em Salvador e Lauro de Freitas. Consulte a prefeitura do seu município para confirmar a unidade responsável pelo seu território.</div>
+</sc-if>
+<button onClick="{{ goResult }}" style="width:100%;padding:17px;background:#0B1F33;color:#fff;border:none;border-radius:16px;font-family:'Manrope',sans-serif;font-weight:700;font-size:15.5px;cursor:pointer">Voltar ao meu caminho</button>
+</div>
+</sc-if>
+
+<sc-if value="{{ isSources }}">
+<div data-screen-label="16 Fontes oficiais" style="padding:22px 24px 36px;display:flex;flex-direction:column;gap:16px">
+<button onClick="{{ goBack }}" style="align-self:flex-start;background:none;border:none;padding:0;font-size:14px;color:#14666B;cursor:pointer;font-weight:600">← Voltar</button>
+<div style="display:flex;flex-direction:column;gap:8px">
+<h1 style="margin:0;font-family:'Manrope',sans-serif;font-size:24px;line-height:1.2;font-weight:800;color:#0B1F33;letter-spacing:-.02em">Fontes oficiais</h1>
+<p style="margin:0;font-size:14px;line-height:1.55;color:rgba(11,31,51,.65)">Base verificada para esta versão em 11/08/2026. Isso é a data da revisão da base, não a data de publicação das normas.</p>
+</div>
+<sc-for list="{{ sourceList }}" as="s" hint-placeholder-count="6">
+<div style="padding:16px;background:#fff;border:1px solid rgba(11,31,51,.1);border-radius:16px;display:flex;flex-direction:column;gap:8px">
+<div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap">
+<span style="font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#14666B;background:rgba(20,102,107,.09);padding:4px 8px;border-radius:6px">{{ s.org }}</span>
+<span style="font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:{{ s.statusColor }};background:{{ s.statusBg }};padding:4px 8px;border-radius:6px">{{ s.status }}</span>
+</div>
+<div style="font-size:14.5px;font-weight:700;line-height:1.35;color:#0B1F33">{{ s.title }}</div>
+<div style="font-size:12px;line-height:1.45;color:rgba(11,31,51,.55);word-break:break-all">{{ s.url }}</div>
+<div style="display:flex;gap:12px;flex-wrap:wrap;font-size:11.5px;color:rgba(11,31,51,.55);font-weight:600">
+<span>Jurisdição: {{ s.jur }}</span><span>Verificado em {{ s.verified }}</span>
+</div>
+<a href="{{ s.url }}" target="_blank" rel="noopener noreferrer" style="align-self:flex-start;padding:10px 14px;background:#0B1F33;color:#fff;border-radius:12px;font-weight:700;font-size:13px;text-decoration:none">Abrir fonte oficial</a>
+</div>
+</sc-for>
+</div>
+</sc-if>
+
+<sc-if value="{{ isPlan }}">
+<div data-screen-label="17 Meu plano" style="padding:22px 24px 36px;display:flex;flex-direction:column;gap:16px">
+<button onClick="{{ goResult }}" class="no-print" style="align-self:flex-start;background:none;border:none;padding:0;font-size:14px;color:#14666B;cursor:pointer;font-weight:600">← Meu caminho</button>
+<div style="display:flex;flex-direction:column;gap:6px;padding-bottom:14px;border-bottom:2px solid #0B1F33">
+<div style="font-family:'Manrope',sans-serif;font-weight:800;font-size:22px;line-height:1.2;color:#0B1F33;letter-spacing:-.02em">Meu plano de próximos passos</div>
+<div style="font-size:12.5px;color:rgba(11,31,51,.6)">11/08/2026 · idioma {{ langCode }} · {{ flowTitle }} · app v0.1.0 · base kb-2026-08-11</div>
+<div style="font-size:12.5px;color:rgba(11,31,51,.6)">Este documento não é parecer jurídico.</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px">
+<div style="font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:rgba(11,31,51,.45)">O que você informou</div>
+<sc-for list="{{ facts }}" as="f" hint-placeholder-count="3">
+<div style="font-size:14px;line-height:1.5;color:#0B1F33">· {{ f }}</div>
+</sc-for>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px">
+<div style="font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:rgba(11,31,51,.45)">Informações que ainda faltam</div>
+<sc-for list="{{ planMissing }}" as="m" hint-placeholder-count="2">
+<div style="font-size:14px;line-height:1.5;color:#0B1F33">· {{ m }}</div>
+</sc-for>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<div style="font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:rgba(11,31,51,.45)">Passos</div>
+<sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
+<div style="font-size:14px;line-height:1.5;color:#0B1F33"><strong>{{ s.n }}. {{ s.title }}</strong> — {{ s.desc }}</div>
+</sc-for>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px">
+<div style="font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:rgba(11,31,51,.45)">Documentos a organizar</div>
+<sc-for list="{{ planDocs }}" as="d" hint-placeholder-count="4">
+<div style="font-size:14px;line-height:1.5;color:#0B1F33">· {{ d }}</div>
+</sc-for>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px">
+<div style="font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:rgba(11,31,51,.45)">Custos informados pela fonte oficial</div>
+<sc-for list="{{ planCosts }}" as="c" hint-placeholder-count="2">
+<div style="font-size:14px;line-height:1.5;color:#0B1F33">· {{ c }}</div>
+</sc-for>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px">
+<div style="font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:rgba(11,31,51,.45)">Contatos</div>
+<sc-for list="{{ planContacts }}" as="c" hint-placeholder-count="3">
+<div style="font-size:14px;line-height:1.5;color:#0B1F33">· {{ c }}</div>
+</sc-for>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px">
+<div style="font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:rgba(11,31,51,.45)">Fontes oficiais</div>
+<sc-for list="{{ planSources }}" as="s" hint-placeholder-count="4">
+<div style="font-size:12.5px;line-height:1.5;color:#0B1F33;word-break:break-all">· {{ s }}</div>
+</sc-for>
+</div>
+<div style="padding:14px;background:#fff;border:1px solid rgba(11,31,51,.14);border-radius:14px;font-size:12.5px;line-height:1.55;color:rgba(11,31,51,.7)">Meu Direito.IA é um projeto independente de pesquisa. Não substitui atendimento jurídico nem decisão de órgão público. Fontes e procedimentos podem mudar; confira o link oficial antes de agir.</div>
+<div class="no-print" style="display:flex;gap:9px;flex-wrap:wrap">
+<button onClick="{{ doPrint }}" style="flex:1;padding:15px;background:#0B1F33;color:#fff;border:none;border-radius:14px;font-family:'Manrope',sans-serif;font-weight:700;font-size:14.5px;cursor:pointer">Imprimir</button>
+<button onClick="{{ doPrint }}" style="flex:1;padding:15px;background:#fff;color:#0B1F33;border:1px solid rgba(11,31,51,.18);border-radius:14px;font-family:'Manrope',sans-serif;font-weight:700;font-size:14.5px;cursor:pointer">Salvar PDF</button>
+</div>
+<button onClick="{{ toggleSave }}" class="no-print" style="width:100%;padding:15px;background:none;color:#14666B;border:1px solid rgba(20,102,107,.3);border-radius:14px;font-family:'Manrope',sans-serif;font-weight:700;font-size:14.5px;cursor:pointer">Salvar meu plano neste dispositivo</button>
+<sc-if value="{{ saveOpen }}">
+<div class="no-print" style="padding:16px;background:#fff;border:1px solid rgba(11,31,51,.14);border-radius:16px;display:flex;flex-direction:column;gap:9px">
+<div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:14.5px;color:#0B1F33">Consentimento específico</div>
+<div style="font-size:13.5px;line-height:1.55;color:rgba(11,31,51,.7)">Serão salvos apenas: categoria identificada, passos, documentos e fontes. Seu relato livre não é salvo. O registro fica disponível por 90 dias e pode ser excluído por você a qualquer momento.</div>
+<button onClick="{{ toggleSave }}" style="align-self:flex-start;padding:11px 15px;background:#0B1F33;color:#fff;border:none;border-radius:12px;font-weight:700;font-size:13.5px;cursor:pointer">Concordo e salvar</button>
+</div>
+</sc-if>
+</div>
+</sc-if>
+
+</div>
+
+<sc-if value="{{ showNav }}">
+<div class="no-print" style="flex:none;height:68px;background:#fff;border-top:1px solid rgba(11,31,51,.1);display:flex;align-items:stretch">
+<sc-for list="{{ navItems }}" as="n" hint-placeholder-count="4">
+<button onClick="{{ n.onSelect }}" style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:0">
+<span style="width:18px;height:18px;border-radius:6px;border:2px solid {{ n.color }};background:{{ n.fill }}"></span>
+<span style="font-size:10.5px;font-weight:700;color:{{ n.color }}">{{ n.label }}</span>
+</button>
+</sc-for>
+</div>
+</sc-if>
+
+</div>
+</div>
+
+<div class="no-print" style="max-width:420px;width:100%;display:flex;flex-direction:column;gap:8px;font-size:11.5px;line-height:1.6;color:rgba(11,31,51,.55)">
+<div><strong style="color:#0B1F33">Matriz BFSI visível na arquitetura:</strong> dificuldade linguística → seletor de idioma com status de revisão · desconhecimento institucional → card do órgão competente com fonte · desorganização dos fatos → tela “o que o sistema entendeu” · dificuldade documental → checklist com quatro estados · vulnerabilidade → escalonamento humano com canais oficiais.</div>
+<div>Fluxos modelados de ponta a ponta: refúgio, apatridia, 2ª via de CRNM e reunião familiar. Taxas, endereços e telefones só aparecem com fonte vinculada.</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:480,&quot;height&quot;:1000},&quot;aiConfigured&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Comportamento&quot;},&quot;startMode&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Usuário escolhe&quot;,&quot;Categorias primeiro&quot;,&quot;Relato primeiro&quot;],&quot;default&quot;:&quot;Usuário escolhe&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Comportamento&quot;}}">
+const V = '11/08/2026';
+
+const SRC = {
+  refugio: { org: 'GOV.BR / MJSP', title: 'Solicitar refúgio', url: 'https://www.gov.br/pt-br/servicos/solicitar-refugio', jur: 'federal', status: 'Verificada', dynamic: false },
+  sisconare: { org: 'Ministério da Justiça', title: 'Sisconare — Sistema de Conare', url: 'https://sisconare.mj.gov.br/', jur: 'federal', status: 'Verificada', dynamic: false },
+  dprnm: { org: 'GOV.BR', title: 'Obter Documento Provisório de Registro Nacional Migratório', url: 'https://www.gov.br/pt-br/servicos/obter-documento-provisorio-de-registro-nacional-migratorio', jur: 'federal', status: 'Verificada', dynamic: false },
+  protocolo: { org: 'GOV.BR', title: 'Renovar protocolo de refúgio (Sisconare)', url: 'https://www.gov.br/pt-br/servicos/renovar-protocolo-de-refugio-para-solicitante-que-esta-no-sisconare', jur: 'federal', status: 'Verificada', dynamic: false },
+  apatridia: { org: 'GOV.BR / MJSP', title: 'Obter reconhecimento como apátrida', url: 'https://www.gov.br/pt-br/servicos/obter-reconhecimento-como-apatrida', jur: 'federal', status: 'Verificada', dynamic: false },
+  apatridia_mj: { org: 'Ministério da Justiça', title: 'Apatridia — informações institucionais', url: 'https://www.gov.br/mj/pt-br/assuntos/seus-direitos/migracoes/apatridia', jur: 'federal', status: 'Verificada', dynamic: false },
+  crnm2via: { org: 'GOV.BR', title: 'Solicitar 2ª via de CRNM', url: 'https://www.gov.br/pt-br/servicos/solicitar-2a-via-de-carteira-de-registro-nacional-migratorio-crnm', jur: 'federal', status: 'Verificada', dynamic: false },
+  residencia: { org: 'GOV.BR', title: 'Obter autorização de residência e CRNM', url: 'https://www.gov.br/pt-br/servicos/obter-autorizacao-de-residencia-e-carteira-de-registro-migratorio', jur: 'federal', status: 'Verificada', dynamic: true },
+  taxas: { org: 'Polícia Federal', title: 'Taxas de migração', url: 'https://www.gov.br/pf/pt-br/assuntos/imigracao/card/taxas', jur: 'federal', status: 'Revisão periódica', dynamic: true },
+  docsPf: { org: 'Polícia Federal', title: 'Documentação exigida — imigração', url: 'https://www.gov.br/pf/pt-br/assuntos/imigracao/pt/nacionalidade/objetivo/servico/documentos', jur: 'federal', status: 'Verificada', dynamic: false },
+  reuniao: { org: 'Ministério da Justiça', title: 'Autorização de residência — reunião familiar', url: 'https://www.gov.br/mj/pt-br/assuntos/seus-direitos/migracoes/autorizacao-de-residencia', jur: 'federal', status: 'Verificada', dynamic: false },
+  vistoReuniao: { org: 'Ministério da Justiça', title: 'Visto para reunião familiar', url: 'https://www.gov.br/mj/pt-br/assuntos/seus-direitos/refugio/servicos/visto-para-reuniao-familiar', jur: 'federal', status: 'Verificada', dynamic: false },
+  pfBahia: { org: 'Polícia Federal', title: 'Superintendência Regional na Bahia', url: 'https://www.gov.br/pf/pt-br/acesso-a-informacao/institucional/quem-e-quem/superintendencias-e-delegacias/bahia/superintendencia-regional-na-bahia', jur: 'state_bahia', status: 'Revisão periódica', dynamic: true },
+  dpu: { org: 'DPU', title: 'Defensoria Pública da União — onde nos encontrar', url: 'https://direitoshumanos.dpu.def.br/onde-nos-encontrar/', jur: 'federal', status: 'Verificada', dynamic: true },
+  lei13445: { org: 'Presidência da República', title: 'Lei nº 13.445/2017 — Lei de Migração', url: 'https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2017/lei/l13445.htm', jur: 'federal', status: 'Verificada', dynamic: false },
+  lei9474: { org: 'Presidência da República', title: 'Lei nº 9.474/1997 — Lei do Refúgio', url: 'https://www.planalto.gov.br/ccivil_03/leis/l9474.htm', jur: 'federal', status: 'Verificada', dynamic: false },
+  cras: { org: 'Prefeitura de Salvador', title: 'CRAS — unidades', url: 'https://sempre.salvador.ba.gov.br/cras/', jur: 'salvador', status: 'Revisão periódica', dynamic: true },
+  craiLf: { org: 'Prefeitura de Lauro de Freitas', title: 'CRAI — notícia oficial de mapeamento (2021)', url: 'https://laurodefreitas.ba.gov.br/2021/noticias/sepadhir-divulga-resultado-do-mapeamento-de-pessoas-refugiadas-e-migrantes-em-lauro-de-freitas/3562', jur: 'lauro_de_freitas', status: 'Precisa revalidação atual', dynamic: true },
+  disque100: { org: 'GOV.BR', title: 'Denunciar violação de direitos humanos', url: 'https://www.gov.br/pt-br/servicos/denunciar-violacao-de-direitos-humanos', jur: 'federal', status: 'Verificada', dynamic: false },
+  ligue180: { org: 'Ministério das Mulheres', title: 'Ligue 180', url: 'https://www.gov.br/mulheres/pt-br/ligue180', jur: 'federal', status: 'Verificada', dynamic: false },
+  samu: { org: 'Ministério da Saúde', title: 'SAMU 192', url: 'https://www.gov.br/saude/pt-br/composicao/saes/samu-192', jur: 'federal', status: 'Verificada', dynamic: false }
+};
+
+const DELEMIG = {
+  name: 'Delegacia de Polícia de Migração (DELEMIG) — Núcleo de Registro de Estrangeiros',
+  role: 'Órgão que cuida de registro migratório e documentos de migração na Bahia',
+  rows: [
+    { k: 'Endereço', v: 'Aeroporto Internacional Luís Eduardo Magalhães, Praça Gago Coutinho, nº 282, São Cristóvão, Salvador/BA, CEP 41520-970' },
+    { k: 'Horário', v: '9h às 16h, de segunda a sexta, em dias úteis' },
+    { k: 'Telefone', v: '(71) 3254-4460' },
+    { k: 'E-mail', v: 'delemig.drex.srba@pf.gov.br · migracao.srba@pf.gov.br' }
+  ],
+  actions: [
+    { label: 'Abrir site oficial', href: SRC.pfBahia.url },
+    { label: 'Ligar', href: 'tel:+557132544460' },
+    { label: 'Enviar e-mail', href: 'mailto:migracao.srba@pf.gov.br' },
+    { label: 'Ver no mapa', href: 'https://www.google.com/maps/search/?api=1&query=Pra%C3%A7a+Gago+Coutinho+282+Salvador+BA' }
+  ],
+  org: SRC.pfBahia.org,
+  sourceUrl: SRC.pfBahia.url
+};
+
+const DPU_POINT = {
+  name: 'Defensoria Pública da União (DPU)',
+  role: 'Atendimento jurídico gratuito a pessoas migrantes, solicitantes de refúgio e apátridas',
+  rows: [
+    { k: 'Como achar', v: 'A DPU mantém página oficial com as unidades de atendimento. Esta versão da pesquisa não fixa endereço local sem fonte atualizada.' }
+  ],
+  actions: [
+    { label: 'Abrir site oficial', href: SRC.dpu.url },
+    { label: 'Ver unidades', href: 'https://www.dpu.def.br/' }
+  ],
+  org: SRC.dpu.org,
+  sourceUrl: SRC.dpu.url
+};
+
+const T_QUESTIONS = [
+  { id: 'in_brazil', title: 'Você está no Brasil agora?', help: 'Isso muda qual órgão pode atender você.', options: [
+    { label: 'Sim', fact: 'Você informou que está no Brasil.' },
+    { label: 'Não', fact: 'Você informou que está fora do Brasil.' },
+    { label: 'Não sei como responder', fact: 'Você não soube informar se está no Brasil.' } ] },
+  { id: 'city', title: 'Em qual cidade você está?', help: 'Contatos locais desta versão cobrem Salvador e Lauro de Freitas.', options: [
+    { label: 'Salvador', fact: 'Você está em Salvador (BA).' },
+    { label: 'Lauro de Freitas', fact: 'Você está em Lauro de Freitas (BA).' },
+    { label: 'Outra cidade', fact: 'Você está em outra cidade.', unmapped: true } ] },
+  { id: 'minor', title: 'Você tem menos de 18 anos?', help: 'Crianças e adolescentes têm proteção específica.', options: [
+    { label: 'Sim', fact: 'Você informou ter menos de 18 anos.', escalate: 'Você informou ter menos de 18 anos. Adolescentes e crianças migrantes não devem depender apenas de um fluxo automatizado: procure a Defensoria Pública da União ou o Conselho Tutelar.' },
+    { label: 'Não', fact: 'Você informou ter 18 anos ou mais.' } ] }
+];
+
+const FLOWS = {
+  refugio: {
+    title: 'Solicitação de refúgio',
+    certainty: 'direct',
+    questions: [
+      { id: 'fear', title: 'Você tem medo de voltar ao seu país?', help: 'Responda apenas o que você quiser contar.', options: [
+        { label: 'Sim', fact: 'Você informou que tem medo de voltar ao seu país.' },
+        { label: 'Não', fact: 'Você informou que não tem medo de voltar ao seu país.' },
+        { label: 'Prefiro não responder', fact: 'Você preferiu não responder sobre medo de retorno.' } ] },
+      { id: 'reason', title: 'Esse medo está relacionado a alguma destas situações?', help: 'Pode marcar mais de uma. Nenhuma resposta é obrigatória.', multi: true, options: [
+        { label: 'Perseguição por raça ou etnia' }, { label: 'Religião' }, { label: 'Nacionalidade' },
+        { label: 'Opinião política' }, { label: 'Pertencer a um grupo social' },
+        { label: 'Violência grave no país' }, { label: 'Conflito ou grave violação de direitos humanos' },
+        { label: 'Outro motivo' }, { label: 'Não sei explicar' } ] },
+      { id: 'started', title: 'Você já começou um pedido de refúgio no Brasil?', help: '', options: [
+        { label: 'Sim, já tenho protocolo', fact: 'Você informou que já possui protocolo de solicitação de refúgio.' },
+        { label: 'Comecei, mas não terminei', fact: 'Você informou que começou o pedido, mas não concluiu.' },
+        { label: 'Não comecei', fact: 'Você ainda não iniciou uma solicitação de refúgio.' },
+        { label: 'Não sei', fact: 'Você não soube informar se já iniciou o pedido.' } ] }
+    ],
+    meaning: 'Pelo que você contou, pode ser importante conhecer o procedimento de solicitação de refúgio no Brasil. Solicitar refúgio é pedir que o Estado analise sua situação; quem decide é o Comitê Nacional para os Refugiados (CONARE), não este aplicativo. O pedido é feito pelo sistema oficial Sisconare e gera um protocolo, que permite permanecer no país enquanto o pedido é analisado e precisa ser renovado enquanto houver análise. Você não precisa provar tudo de imediato, e pode pedir ajuda gratuita da Defensoria Pública da União.',
+    steps: [
+      { title: 'Acesse o Sisconare', desc: 'É o sistema oficial do governo para pedidos de refúgio.', src: 'sisconare' },
+      { title: 'Faça seu cadastro', desc: 'Crie seu acesso com os dados pedidos pelo próprio sistema.', src: 'refugio' },
+      { title: 'Preencha a solicitação', desc: 'Conte sua situação com suas palavras. Não invente fatos e não deixe de contar o que é importante.', src: 'refugio' },
+      { title: 'Guarde seu protocolo', desc: 'É o documento que comprova que seu pedido está em análise.', src: 'refugio' },
+      { title: 'Siga as orientações de atendimento da Polícia Federal', desc: 'Quando o procedimento exigir, você será orientado a comparecer à Polícia Federal.', src: 'pfBahia' },
+      { title: 'Renove o protocolo enquanto o pedido estiver em análise', desc: 'O serviço oficial de renovação é feito para quem já está no Sisconare.', src: 'protocolo' },
+      { title: 'Peça o documento provisório quando aplicável', desc: 'Existe um Documento Provisório de Registro Nacional Migratório (DPRNM) para quem solicitou refúgio.', src: 'dprnm' }
+    ],
+    docs: {
+      required: [
+        { name: 'Documento de identificação que você tenha', condition: 'Passaporte, documento do seu país ou outro documento que ajude a identificar você.', src: 'refugio', explain: 'Qualquer documento oficial que traga seu nome e sua nacionalidade. Se você não tem nenhum, informe isso no pedido: a falta de documento não impede solicitar refúgio.' },
+        { name: 'Relato da sua situação', condition: 'Contado por você mesmo no formulário do Sisconare.', src: 'refugio', explain: 'É a sua história, escrita com suas palavras: o que aconteceu, quando e por que você não pode voltar.' }
+      ],
+      conditional: [
+        { name: 'Documentos dos seus filhos menores de idade', condition: 'Se você está pedindo refúgio junto com crianças ou adolescentes.', src: 'refugio', explain: 'Certidão de nascimento é o documento que registra oficialmente o nascimento de uma pessoa.' }
+      ],
+      useful: [
+        { name: 'Comprovante de endereço no Brasil', condition: 'Ajuda no contato e no atendimento, quando você tiver.', src: 'refugio', explain: 'Conta de luz, água ou declaração de quem mora com você.' }
+      ],
+      verify: [
+        { name: 'Exigências específicas do seu caso', condition: 'A lista completa depende do que o sistema oficial pedir no momento do seu pedido. Confirme na página oficial.', src: 'refugio', explain: 'Procedimentos mudam. Antes de agir, abra a página oficial e confira a lista atual.' }
+      ]
+    },
+    costs: [
+      { label: 'Solicitação de refúgio', value: 'Precisa confirmar', note: 'A fonte oficial consultada não informa um valor de taxa para a solicitação. Para não orientar de forma incorreta, não afirmamos gratuidade por analogia: confirme na página oficial do serviço.', waiver: false, src: 'refugio' },
+      { label: 'Documento Provisório de Registro Nacional Migratório (DPRNM)', value: 'Ver página oficial', note: 'O custo aplicável é o que constar na página oficial do serviço no momento do pedido.', waiver: false, src: 'dprnm' }
+    ],
+    points: ['delemig', 'dpu'],
+    sources: ['refugio', 'sisconare', 'protocolo', 'dprnm', 'pfBahia', 'lei9474', 'dpu'],
+    fallbacks: [
+      { title: 'Se o Sisconare estiver fora do ar', body: 'A página oficial do serviço orienta atualmente contato pelo e-mail sisconare@mj.gov.br. Não use intermediários nem sites parecidos.' },
+      { title: 'Se você não tiver nenhum documento do seu país', body: 'Informe isso no próprio pedido. A falta de documento não impede solicitar refúgio, e a Defensoria Pública da União pode ajudar gratuitamente.' },
+      { title: 'Se sua situação for diferente do que descrevemos', body: 'Este aplicativo faz orientação inicial. Casos com prazo, risco ou contradição precisam de uma pessoa real analisando.' }
+    ],
+    missing: ['Se há pessoas dependentes de você no pedido.', 'Se você já tem alguma data de atendimento marcada.']
+  },
+  apatridia: {
+    title: 'Reconhecimento da condição de apátrida',
+    certainty: 'needs_info',
+    questions: [
+      { id: 'nat', title: 'Algum país reconhece você como cidadão ou nacional?', help: '', options: [
+        { label: 'Sim, um país me reconhece', fact: 'Você informou que um país reconhece você como nacional.' },
+        { label: 'Nenhum país me reconhece', fact: 'Você informou que nenhum país reconhece você como nacional.' },
+        { label: 'Não tenho certeza', fact: 'Você não tem certeza se algum país reconhece você como nacional.' } ] },
+      { id: 'nat_doc', title: 'Você tem algum documento relacionado à sua nacionalidade?', help: '', options: [
+        { label: 'Tenho alguns documentos', fact: 'Você informou ter alguns documentos relacionados à nacionalidade.' },
+        { label: 'Não tenho nenhum', fact: 'Você informou não ter documentos relacionados à nacionalidade.' },
+        { label: 'Não sei quais servem', fact: 'Você não soube dizer quais documentos servem.' } ] },
+      { id: 'other_countries', title: 'Você morou em outros países nos últimos cinco anos?', help: 'Isso pode influenciar documentos pedidos no procedimento.', options: [
+        { label: 'Sim', fact: 'Você morou em outros países nos últimos cinco anos.' },
+        { label: 'Não', fact: 'Você não morou em outros países nos últimos cinco anos.' },
+        { label: 'Não sei', fact: 'Você não soube informar sobre residência em outros países.' } ] }
+    ],
+    meaning: 'Talvez seja importante conhecer o procedimento brasileiro de reconhecimento da condição de apátrida. Em termos gerais, pessoa apátrida é aquela que não é considerada nacional por nenhum Estado segundo a legislação desses países. Este aplicativo não reconhece ninguém como apátrida: o pedido é analisado pelo Ministério da Justiça e Segurança Pública, pelo sistema SisApatridia. Como a comprovação envolve documentos de outros países, este é um caso em que apoio jurídico gratuito ajuda bastante.',
+    steps: [
+      { title: 'Leia o serviço oficial de reconhecimento como apátrida', desc: 'A página oficial descreve requisitos, documentos e etapas atuais.', src: 'apatridia' },
+      { title: 'Reúna os documentos que você conseguir', desc: 'Inclui documentos que demonstrem sua situação e comprovante de endereço ou declaração.', src: 'apatridia' },
+      { title: 'Faça o pedido pelo sistema oficial (SisApatridia)', desc: 'O procedimento é conduzido pelo Ministério da Justiça e Segurança Pública.', src: 'apatridia_mj' },
+      { title: 'Acompanhe o pedido e responda às exigências', desc: 'Se pedirem documentos que você não tem, explique a sua situação em vez de desistir.', src: 'apatridia' },
+      { title: 'Procure apoio jurídico gratuito', desc: 'A Defensoria Pública da União atende pessoas apátridas gratuitamente.', src: 'dpu' }
+    ],
+    docs: {
+      required: [
+        { name: 'Comprovante de residência no Brasil ou declaração', condition: 'A fonte oficial indica residência no Brasil entre os pontos do procedimento.', src: 'apatridia', explain: 'Pode ser conta no seu nome, contrato ou uma declaração de quem mora com você.' },
+        { name: 'Documentos que você tenha sobre sua situação', condition: 'Documentos que demonstrem que nenhum Estado considera você nacional.', src: 'apatridia', explain: 'Qualquer papel oficial de país onde você nasceu ou morou, mesmo antigo ou incompleto.' }
+      ],
+      conditional: [
+        { name: 'Documentos sobre antecedentes nos países onde morou', condition: 'Se você residiu em outros países nos últimos anos.', src: 'apatridia', explain: 'Certidão emitida por autoridade do país onde você morou. Se não for possível obter, explique isso no pedido.' }
+      ],
+      useful: [
+        { name: 'Certidão de nascimento, se existir', condition: 'Ajuda a demonstrar onde você nasceu.', src: 'apatridia', explain: 'Certidão de nascimento é o documento que registra oficialmente o nascimento de uma pessoa.' }
+      ],
+      verify: [
+        { name: 'Lista completa e atual de documentos', condition: 'Consulte a página oficial no momento do pedido: o procedimento pode ter sido atualizado.', src: 'apatridia', explain: 'Esta versão da base foi verificada em 11/08/2026 e não substitui a leitura da fonte no dia em que você for pedir.' }
+      ]
+    },
+    costs: [
+      { label: 'Reconhecimento da condição de apátrida', value: 'Gratuito', note: 'Este serviço é indicado como gratuito no portal oficial. Confirme na página do serviço antes de qualquer pagamento e nunca pague a intermediários.', waiver: false, src: 'apatridia' }
+    ],
+    points: ['dpu', 'delemig'],
+    sources: ['apatridia', 'apatridia_mj', 'dpu', 'lei13445'],
+    fallbacks: [
+      { title: 'Se pedirem um documento que você não consegue obter', body: 'Explique no pedido por que não é possível obter aquele documento. Apoio jurídico gratuito ajuda a redigir essa justificativa.' },
+      { title: 'Se um país afirmar que você tem aquela nacionalidade', body: 'A situação muda e precisa de análise humana. Não conclua nada com base apenas nesta orientação inicial.' },
+      { title: 'Se você tiver dúvida sobre sua nacionalidade', body: 'Dúvida de nacionalidade é um caso que este aplicativo encaminha para atendimento humano.' }
+    ],
+    missing: ['Se algum país já afirmou que você possui aquela nacionalidade.', 'Quais documentos você consegue obter hoje.']
+  },
+  crnm: {
+    title: 'Segunda via da Carteira de Registro Nacional Migratório (CRNM)',
+    certainty: 'direct',
+    questions: [
+      { id: 'what', title: 'O que aconteceu com seu documento?', help: '', options: [
+        { label: 'Perdi', fact: 'Você informou que perdeu sua Carteira de Registro Nacional Migratório (CRNM).' },
+        { label: 'Foi roubado ou furtado', fact: 'Você informou que sua CRNM foi roubada ou furtada.' },
+        { label: 'Venceu', fact: 'Você informou que sua CRNM está vencida.' },
+        { label: 'Preciso corrigir um dado', fact: 'Você informou que precisa alterar um dado da CRNM.' } ] },
+      { id: 'bo', title: 'Você registrou boletim de ocorrência?', help: 'Em casos de perda, roubo ou furto isso costuma ser pedido.', options: [
+        { label: 'Sim', fact: 'Você informou que registrou boletim de ocorrência.' },
+        { label: 'Não', fact: 'Você informou que não registrou boletim de ocorrência.' },
+        { label: 'Não sei como fazer', fact: 'Você não sabe como registrar boletim de ocorrência.' } ] }
+    ],
+    meaning: 'Pelo que você contou, o caminho a investigar é a segunda via da Carteira de Registro Nacional Migratório (CRNM), o documento de identificação de pessoas migrantes registradas no Brasil. O pedido é feito pelo serviço oficial e o atendimento presencial, quando exigido, é na Polícia Federal. Perder o documento não faz você perder o registro: o registro continua existindo.',
+    steps: [
+      { title: 'Abra o serviço oficial de segunda via', desc: 'A página oficial descreve as etapas e o que é exigido.', src: 'crnm2via' },
+      { title: 'Confira as taxas aplicáveis', desc: 'A Polícia Federal mantém página própria de taxas de migração e de hipóteses de isenção.', src: 'taxas' },
+      { title: 'Reúna os documentos pedidos', desc: 'A Polícia Federal publica a lista de documentação exigida por tipo de serviço.', src: 'docsPf' },
+      { title: 'Compareça à unidade de migração quando exigido', desc: 'Na Bahia, o atendimento de migração indicado pela fonte oficial é na DELEMIG, em Salvador.', src: 'pfBahia' }
+    ],
+    docs: {
+      required: [
+        { name: 'Formulário do pedido', condition: 'Preenchido no próprio serviço oficial.', src: 'crnm2via', explain: 'É o pedido eletrônico que você preenche na página do governo, sem intermediários.' },
+        { name: 'Documento de identificação disponível', condition: 'Passaporte ou outro documento que identifique você.', src: 'docsPf', explain: 'Serve para confirmar que você é a pessoa registrada.' }
+      ],
+      conditional: [
+        { name: 'Boletim de ocorrência', condition: 'Se o documento foi perdido, roubado ou furtado.', src: 'docsPf', explain: 'Registro feito na polícia contando o que aconteceu com o documento.' }
+      ],
+      useful: [
+        { name: 'Cópia ou foto do documento antigo', condition: 'Se você tiver guardado, ajuda a localizar seu registro.', src: 'docsPf', explain: 'Mesmo uma foto no celular pode ajudar no atendimento.' }
+      ],
+      verify: [
+        { name: 'Comprovante de pagamento da taxa', condition: 'Só se aplica se a taxa incidir no seu caso. Confirme na página de taxas antes de pagar.', src: 'taxas', explain: 'O pagamento é feito por guia oficial (GRU). Nunca pague a intermediários.' }
+      ]
+    },
+    costs: [
+      { label: 'Taxa de emissão da CRNM', value: 'R$ 204,77', note: 'A página oficial de autorização de residência informa atualmente esta taxa quando aplicável (código STN 140120). Confirme se ela incide no seu caso na página de taxas da Polícia Federal.', waiver: true, src: 'residencia' },
+      { label: 'Isenções', value: 'Precisa confirmar', note: 'Existem hipóteses de isenção previstas oficialmente. Confira na página de taxas de migração da Polícia Federal se a sua situação está entre elas.', waiver: false, src: 'taxas' }
+    ],
+    points: ['delemig', 'dpu'],
+    sources: ['crnm2via', 'taxas', 'docsPf', 'residencia', 'pfBahia'],
+    fallbacks: [
+      { title: 'Se a taxa não parecer aplicável ao seu caso', body: 'Não pague antes de confirmar. A página oficial de taxas indica as hipóteses de incidência e de isenção.' },
+      { title: 'Se você não conseguir agendar atendimento', body: 'Guarde os comprovantes das tentativas e procure os canais oficiais da Polícia Federal. Não recorra a intermediários que cobram por agendamento.' },
+      { title: 'Se receberem uma exigência que você não entendeu', body: 'Peça a exigência por escrito e procure a Defensoria Pública da União.' }
+    ],
+    missing: ['Se sua CRNM estava dentro do prazo de validade.', 'Se você já registrou boletim de ocorrência.']
+  },
+  familia: {
+    title: 'Reunião familiar',
+    certainty: 'needs_info',
+    questions: [
+      { id: 'who', title: 'Com quem você quer morar no Brasil?', help: '', options: [
+        { label: 'Cônjuge ou companheiro(a)', fact: 'Você quer morar com seu cônjuge ou companheiro(a).' },
+        { label: 'Filho ou filha', fact: 'Você quer morar com seu filho ou filha.' },
+        { label: 'Pai ou mãe', fact: 'Você quer morar com seu pai ou sua mãe.' },
+        { label: 'Avô ou avó', fact: 'Você quer morar com seu avô ou sua avó.' },
+        { label: 'Neto ou neta', fact: 'Você quer morar com seu neto ou sua neta.' },
+        { label: 'Irmão ou irmã', fact: 'Você quer morar com seu irmão ou sua irmã.' },
+        { label: 'Outro familiar', fact: 'Você quer morar com outro familiar.' } ] },
+      { id: 'where_fam', title: 'Essa pessoa da família está no Brasil agora?', help: 'Isso muda qual pedido se aplica.', options: [
+        { label: 'Sim, está no Brasil', fact: 'O familiar está no Brasil.' },
+        { label: 'Não, está em outro país', fact: 'O familiar está em outro país.' },
+        { label: 'Não sei', fact: 'Você não soube informar onde o familiar está.' } ] }
+    ],
+    meaning: 'Reunião familiar é o caminho pensado para famílias que querem viver juntas no Brasil. Existem dois pedidos diferentes, que não se confundem: o visto para reunião familiar, pedido quando a pessoa ainda está fora do Brasil, e a autorização de residência para reunião familiar, pedida quando a pessoa já ingressou. O grau de parentesco sozinho não decide o resultado: os critérios oficiais atualizados são da Polícia Federal e do Ministério da Justiça. Por isso, aqui a orientação é apontar a fonte certa e o órgão certo, e não afirmar elegibilidade.',
+    steps: [
+      { title: 'Identifique qual dos dois pedidos é o seu caso', desc: 'Visto para reunião familiar quando a pessoa está fora; autorização de residência quando já está no Brasil.', src: 'vistoReuniao' },
+      { title: 'Leia os critérios oficiais de autorização de residência', desc: 'O Ministério da Justiça mantém a página com as hipóteses e o procedimento.', src: 'reuniao' },
+      { title: 'Confira a documentação exigida pela Polícia Federal', desc: 'A lista varia conforme o vínculo familiar e o serviço escolhido.', src: 'docsPf' },
+      { title: 'Confira as taxas e as hipóteses de isenção', desc: 'A página oficial informa quais taxas se aplicam quando o pedido é de autorização de residência.', src: 'taxas' },
+      { title: 'Procure apoio jurídico gratuito se houver dúvida sobre o vínculo', desc: 'Documento de vínculo familiar emitido no exterior costuma ser a parte mais difícil.', src: 'dpu' }
+    ],
+    docs: {
+      required: [
+        { name: 'Documento que comprove o vínculo familiar', condition: 'Certidão de casamento, certidão de nascimento ou documento equivalente.', src: 'docsPf', explain: 'É o documento que mostra a relação entre você e seu familiar, como certidão de nascimento ou de casamento.' },
+        { name: 'Documento de identificação de quem pede', condition: 'Passaporte ou outro documento aceito no serviço.', src: 'docsPf', explain: 'Serve para identificar você no pedido.' }
+      ],
+      conditional: [
+        { name: 'Documentos do familiar que está no Brasil', condition: 'Se o pedido depende de vínculo com pessoa residente no Brasil.', src: 'reuniao', explain: 'Documentos da pessoa da família que já mora aqui, para comprovar a ligação.' }
+      ],
+      useful: [
+        { name: 'Provas da convivência', condition: 'Fotos, mensagens, comprovantes de moradia em comum, quando existirem.', src: 'reuniao', explain: 'Ajudam a demonstrar que a relação familiar é real, especialmente em união estável.' }
+      ],
+      verify: [
+        { name: 'Necessidade de tradução, apostilamento ou legalização', condition: 'Não existe regra única. Confirme na documentação oficial o que se aplica ao seu documento e ao seu país.', src: 'docsPf', explain: 'Apostilamento é um selo internacional que confirma que um documento estrangeiro é autêntico. Não vale para todos os países nem para todos os documentos.' }
+      ]
+    },
+    costs: [
+      { label: 'Taxa de processamento do pedido de autorização de residência', value: 'R$ 168,13', note: 'A página oficial informa atualmente esta taxa quando aplicável (código STN 140066).', waiver: true, src: 'residencia' },
+      { label: 'Taxa de emissão da CRNM', value: 'R$ 204,77', note: 'A página oficial informa atualmente esta taxa quando aplicável (código STN 140120).', waiver: true, src: 'residencia' }
+    ],
+    points: ['delemig', 'dpu'],
+    sources: ['reuniao', 'vistoReuniao', 'docsPf', 'taxas', 'residencia', 'pfBahia'],
+    fallbacks: [
+      { title: 'Se o familiar estiver fora do Brasil', body: 'O caminho começa pelo visto para reunião familiar, que é pedido no exterior, e não pela autorização de residência.' },
+      { title: 'Se você não tiver certidão do vínculo', body: 'Não desista do pedido: procure a Defensoria Pública da União antes, para entender quais alternativas a fonte oficial admite.' },
+      { title: 'Se a orientação recebida no atendimento for diferente', body: 'Peça a exigência por escrito e confira na página oficial. Este aplicativo faz orientação inicial e pode não cobrir a sua hipótese específica.' }
+    ],
+    missing: ['Se o familiar já possui residência ou nacionalidade brasileira.', 'Se existe documento oficial que comprove o vínculo.']
+  }
+};
+
+const CATEGORIES = [
+  { tag: '01', title: 'Documento ou situação migratória', sub: 'Quero regularizar ou entender meus documentos', flow: 'crnm' },
+  { tag: '02', title: 'Refúgio e proteção', sub: 'Tenho medo de voltar ao meu país', flow: 'refugio' },
+  { tag: '03', title: 'Não tenho nacionalidade', sub: 'Nenhum país me reconhece como nacional', flow: 'apatridia' },
+  { tag: '04', title: 'Família', sub: 'Quero morar com um familiar no Brasil', flow: 'familia' },
+  { tag: '05', title: 'Trabalho', sub: 'Preciso trabalhar ou organizar meus documentos', flow: 'unmapped' },
+  { tag: '06', title: 'Saúde', sub: 'Preciso usar o SUS', flow: 'unmapped' },
+  { tag: '07', title: 'Escola ou faculdade', sub: 'Quero estudar ou validar estudos', flow: 'unmapped' },
+  { tag: '08', title: 'Assistência e benefícios', sub: 'Preciso de apoio social', flow: 'unmapped' },
+  { tag: '09', title: 'Sofri violência ou discriminação', sub: 'Preciso de proteção ou ajuda', flow: 'urgent' },
+  { tag: '10', title: 'Perdi ou preciso renovar meu documento', sub: 'CRNM, protocolo ou outro documento', flow: 'crnm' },
+  { tag: '11', title: 'Naturalização', sub: 'Quero saber sobre nacionalidade brasileira', flow: 'unmapped' },
+  { tag: '12', title: 'Não sei qual é o meu problema', sub: 'Me ajude a descobrir', flow: 'narrative' }
+];
+
+const DOC_STATES = [
+  { label: 'Marcar', mark: '', border: 'rgba(11,31,51,.25)', bg: '#fff', color: 'rgba(11,31,51,.4)', text: '' },
+  { label: 'Já tenho', mark: '✓', border: '#14666B', bg: '#14666B', color: '#14666B', text: 'Já tenho' },
+  { label: 'Não tenho', mark: '–', border: '#B02A2A', bg: '#B02A2A', color: '#B02A2A', text: 'Não tenho' },
+  { label: 'Preciso descobrir', mark: '?', border: '#C08A2E', bg: '#C08A2E', color: '#8A5F14', text: 'Preciso descobrir' }
+];
+
+class Component extends DCLogic {
+  state = {
+    screen: 'lang', history: [], lang: 'pt-BR',
+    a11yOpen: false, saveOpen: false,
+    flowId: null, qIndex: 0, answers: {}, multiSel: [],
+    narrative: '', listening: false, voiceAvailable: true,
+    docStates: {}, explainOpen: {}, unmappedNote: false
+  };
+
+  componentDidMount() {
+    const ok = typeof window !== 'undefined' && !!(window.SpeechRecognition || window.webkitSpeechRecognition);
+    if (!ok) this.setState({ voiceAvailable: false });
+  }
+
+  go = (screen) => this.setState(s => ({ screen, history: [...s.history, s.screen], a11yOpen: false }));
+  back = () => this.setState(s => {
+    const h = [...s.history];
+    const prev = h.pop() || 'home';
+    return { screen: prev, history: h };
+  });
+
+  questions() {
+    const f = FLOWS[this.state.flowId];
+    return f ? [...T_QUESTIONS, ...f.questions] : T_QUESTIONS;
+  }
+
+  startFlow = (flowId) => this.setState(s => ({ flowId, qIndex: 0, answers: {}, multiSel: [], screen: 'quiz', history: [...s.history, s.screen] }));
+
+  answer = (q, opt) => {
+    const answers = { ...this.state.answers, [q.id]: { label: opt.label, fact: opt.fact, escalate: opt.escalate, unmapped: opt.unmapped } };
+    this.advance(answers);
+  };
+
+  advance = (answers) => {
+    const qs = this.questions();
+    const next = this.state.qIndex + 1;
+    if (next >= qs.length) this.setState(s => ({ answers, screen: 'result', history: [...s.history, 'quiz'] }));
+    else this.setState({ answers, qIndex: next, multiSel: [] });
+  };
+
+  toggleMulti = (label) => this.setState(s => ({
+    multiSel: s.multiSel.includes(label) ? s.multiSel.filter(x => x !== label) : [...s.multiSel, label]
+  }));
+
+  confirmMulti = () => {
+    const qs = this.questions();
+    const q = qs[this.state.qIndex];
+    const sel = this.state.multiSel;
+    const fact = sel.length ? 'Você indicou: ' + sel.join('; ') + '.' : 'Você não indicou motivos específicos.';
+    this.advance({ ...this.state.answers, [q.id]: { label: sel.join(', '), fact } });
+  };
+
+  quizBack = () => {
+    if (this.state.qIndex === 0) this.back();
+    else this.setState(s => ({ qIndex: s.qIndex - 1, multiSel: [] }));
+  };
+
+  skip = () => {
+    const q = this.questions()[this.state.qIndex];
+    this.advance({ ...this.state.answers, [q.id]: { label: 'Prefiro não responder', fact: null } });
+  };
+
+  facts() {
+    const qs = this.questions();
+    const out = [];
+    qs.forEach(q => { const a = this.state.answers[q.id]; if (a && a.fact) out.push(a.fact); });
+    return out;
+  }
+
+  escalationReason() {
+    const qs = this.questions();
+    for (const q of qs) { const a = this.state.answers[q.id]; if (a && a.escalate) return a.escalate; }
+    const f = FLOWS[this.state.flowId];
+    if (f && f.certainty === 'needs_info') return 'Sua situação envolve documentos e critérios que dependem de análise caso a caso. Antes de agir, converse com a Defensoria Pública da União, que atende gratuitamente.';
+    return null;
+  }
+
+  cycleDoc = (key) => this.setState(s => ({ docStates: { ...s.docStates, [key]: ((s.docStates[key] || 0) + 1) % 4 } }));
+  toggleExplain = (key) => this.setState(s => ({ explainOpen: { ...s.explainOpen, [key]: !s.explainOpen[key] } }));
+
+  speak = () => {
+    if (typeof window === 'undefined' || !window.speechSynthesis) return;
+    const el = document.querySelector('[data-screen-label]');
+    if (!el) return;
+    const u = new SpeechSynthesisUtterance(el.innerText.slice(0, 900));
+    u.lang = 'pt-BR';
+    window.speechSynthesis.cancel();
+    window.speechSynthesis.speak(u);
+  };
+
+  toggleVoice = () => {
+    if (!this.state.voiceAvailable) return;
+    this.setState(s => ({ listening: !s.listening }));
+  };
+
+  docGroups() {
+    const f = FLOWS[this.state.flowId] || FLOWS.refugio;
+    const meta = [
+      { key: 'required', label: 'Obrigatórios', color: '#B02A2A' },
+      { key: 'conditional', label: 'Se aplicável', color: '#8A5F14' },
+      { key: 'useful', label: 'Se você tiver', color: '#14666B' },
+      { key: 'verify', label: 'Precisa confirmar', color: 'rgba(11,31,51,.55)' }
+    ];
+    return meta.map(m => ({
+      label: m.label, color: m.color,
+      items: (f.docs[m.key] || []).map((d, i) => {
+        const key = m.key + i;
+        const st = DOC_STATES[this.state.docStates[key] || 0];
+        return {
+          name: d.name, condition: d.condition, explain: d.explain,
+          url: SRC[d.src].url, mark: st.mark, markBorder: st.border, markBg: st.bg,
+          stateLabel: st.text, stateColor: st.color,
+          explainOpen: !!this.state.explainOpen[key],
+          onCycle: () => this.cycleDoc(key), onExplain: () => this.toggleExplain(key)
+        };
+      })
+    })).filter(g => g.items.length);
+  }
+
+  renderVals() {
+    const s = this.state;
+    const aiOn = this.props.aiConfigured !== false;
+    const flow = FLOWS[s.flowId] || null;
+    const qs = this.questions();
+    const q = qs[Math.min(s.qIndex, qs.length - 1)] || qs[0];
+    const facts = this.facts();
+    const esc = this.escalationReason();
+    const cityA = s.answers.city;
+    const CERT = {
+      direct: { label: 'Orientação direta', color: '#14666B', bg: 'rgba(20,102,107,.1)' },
+      needs_info: { label: 'Merece análise humana', color: '#8A5F14', bg: 'rgba(192,138,46,.14)' }
+    };
+    const cert = CERT[flow ? flow.certainty : 'direct'];
+    const pointsMap = { delemig: DELEMIG, dpu: DPU_POINT };
+    const flowSources = (flow ? flow.sources : Object.keys(SRC)).map(k => SRC[k]);
+    const srcList = (s.screen === 'sources' && !flow ? Object.keys(SRC).map(k => SRC[k]) : flowSources).map(x => ({
+      org: x.org, title: x.title, url: x.url, jur: x.jur, verified: V, status: x.status,
+      statusColor: x.status === 'Verificada' ? '#14666B' : '#8A5F14',
+      statusBg: x.status === 'Verificada' ? 'rgba(20,102,107,.1)' : 'rgba(192,138,46,.14)'
+    }));
+
+    const navDef = [
+      { label: 'Início', screen: 'home' },
+      { label: 'Meu caminho', screen: flow ? 'result' : 'start' },
+      { label: 'Fontes', screen: 'sources' },
+      { label: 'Ajuda', screen: 'urgent' }
+    ];
+
+    return {
+      isLang: s.screen === 'lang', isPrivacy: s.screen === 'privacy', isPrivacyDetail: s.screen === 'privacyDetail',
+      isHome: s.screen === 'home', isAbout: s.screen === 'about', isStart: s.screen === 'start',
+      isCategories: s.screen === 'categories', isQuiz: s.screen === 'quiz', isNarrative: s.screen === 'narrative',
+      isUnderstood: s.screen === 'understood', isUrgent: s.screen === 'urgent', isResult: s.screen === 'result',
+      isDocs: s.screen === 'docs', isCosts: s.screen === 'costs', isWhere: s.screen === 'where',
+      isSources: s.screen === 'sources', isPlan: s.screen === 'plan',
+      showNav: ['home', 'result', 'sources', 'docs', 'costs', 'where', 'about', 'privacyDetail'].includes(s.screen),
+      navItems: navDef.map(n => {
+        const active = n.screen === s.screen;
+        return { label: n.label, color: active ? '#0B1F33' : 'rgba(11,31,51,.4)', fill: active ? '#0B1F33' : 'transparent', onSelect: () => this.go(n.screen) };
+      }),
+
+      langCode: s.lang,
+      langs: [
+        { name: 'Português (Brasil)', status: 'Revisado juridicamente · base canônica', code: 'pt-BR' },
+        { name: 'Español', status: 'Revisado linguisticamente', code: 'es' },
+        { name: 'English', status: 'Tradução automática — não revisada', code: 'en' },
+        { name: 'Français', status: 'Tradução automática — não revisada', code: 'fr' }
+      ].map(l => ({ ...l, onSelect: () => this.setState(st => ({ lang: l.code, screen: 'privacy', history: [...st.history, 'lang'] })) })),
+
+      privacyItems: [
+        { title: 'A triagem é anônima', body: 'Você chega ao resultado sem conta, sem e-mail, sem telefone e sem CPF. As respostas ficam apenas nesta sessão do navegador.' },
+        { title: 'Seu relato não é salvo automaticamente', body: 'Texto livre sobre perseguição, violência, religião, origem ou saúde não é gravado sem uma decisão sua.' },
+        { title: 'O que a pesquisa mede', body: 'Apenas dados agregados: idioma escolhido, categoria da demanda, cidade em nível municipal, fluxo final, se houve escalonamento humano e as versões do app e da base.' },
+        { title: 'O que nunca é registrado', body: 'Texto livre, número de documento, nome e IP não entram nas tabelas de pesquisa.' }
+      ],
+
+      pipeline: [
+        { n: '1', label: 'Quiz determinístico' }, { n: '2', label: 'Fatos estruturados' },
+        { n: '3', label: 'Motor de triagem' }, { n: '4', label: 'Recuperação na base oficial' },
+        { n: '5', label: 'IA simplifica e organiza' }, { n: '6', label: 'Validador de evidências' },
+        { n: '7', label: 'Resposta com fontes' }
+      ],
+      aiCannot: ['Criar lei, requisito, prazo ou taxa', 'Inventar telefone, endereço ou link', 'Reconhecer alguém como refugiado ou apátrida', 'Decidir naturalização ou garantir residência', 'Acrescentar fato que você não contou'],
+
+      categories: CATEGORIES.map(c => ({
+        tag: c.tag, title: c.title, sub: c.sub,
+        onSelect: () => {
+          if (c.flow === 'urgent') this.go('urgent');
+          else if (c.flow === 'narrative') this.go('narrative');
+          else if (c.flow === 'unmapped') this.setState(st => ({ screen: 'narrative', history: [...st.history, st.screen] }));
+          else this.startFlow(c.flow);
+        }
+      })),
+
+      quizTitle: q.title, quizHelp: q.help || 'Se não souber, você pode seguir sem responder.',
+      quizCounter: 'Pergunta ' + (s.qIndex + 1) + ' de ' + qs.length,
+      quizPct: Math.round(((s.qIndex + 1) / qs.length) * 100),
+      quizMulti: !!q.multi,
+      quizOptions: (q.options || []).map(o => {
+        const sel = q.multi ? s.multiSel.includes(o.label) : false;
+        return {
+          label: o.label,
+          bg: sel ? 'rgba(20,102,107,.07)' : '#fff',
+          border: sel ? '#14666B' : 'rgba(11,31,51,.12)',
+          markRadius: q.multi ? '6px' : '50%',
+          markBorder: sel ? '#14666B' : 'rgba(11,31,51,.25)',
+          markBg: sel ? '#14666B' : 'transparent',
+          mark: sel ? '✓' : '',
+          onSelect: () => q.multi ? this.toggleMulti(o.label) : this.answer(q, o)
+        };
+      }),
+      quizConfirm: this.confirmMulti, quizSkip: this.skip, quizBack: this.quizBack,
+
+      narrative: s.narrative,
+      onNarrative: (e) => this.setState({ narrative: e.target.value }),
+      narrativeShown: s.narrative && s.narrative.trim().length > 3 ? s.narrative : 'eu vim da venezuela fiquei aqui minha filha nasceu aqui e agora não sei o que fazer com meus papéis',
+      narrativeCta: aiOn ? 'Organizar o que eu contei' : 'Continuar pelas perguntas',
+      submitNarrative: () => this.go(aiOn ? 'understood' : 'categories'),
+      micLabel: s.listening ? 'Ouvindo… toque para parar' : 'Falar em vez de escrever',
+      micColor: s.listening ? '#B02A2A' : 'rgba(11,31,51,.3)',
+      voiceUnavailable: !s.voiceAvailable,
+      aiOff: !aiOn,
+      understoodFacts: [
+        { n: '1', text: 'Você veio da Venezuela.' },
+        { n: '2', text: 'Você está atualmente no Brasil.' },
+        { n: '3', text: 'Você tem uma filha nascida no Brasil.' },
+        { n: '4', text: 'Você tem dúvidas sobre a sua situação documental.' }
+      ],
+      missingInfo: [
+        { question: 'Você já tem algum documento brasileiro de registro migratório?', why: 'Muda se o caminho é primeiro registro, renovação ou segunda via.' },
+        { question: 'Você tem medo de voltar ao seu país?', why: 'Se houver, o procedimento de refúgio pode ser relevante e tem regras próprias.' }
+      ],
+      startRefugioQuiz: () => this.startFlow('crnm'),
+
+      emergency: [
+        { number: '190', name: 'Polícia Militar', when: 'Emergência policial: alguém está ameaçando você agora.', tel: 'tel:190', url: SRC.disque100.url },
+        { number: '192', name: 'SAMU', when: 'Emergência médica. Este aplicativo não faz diagnóstico médico.', tel: 'tel:192', url: SRC.samu.url },
+        { number: '100', name: 'Disque Direitos Humanos', when: 'Violação de direitos humanos, incluindo xenofobia e discriminação.', tel: 'tel:100', url: SRC.disque100.url },
+        { number: '180', name: 'Ligue 180', when: 'Violência contra a mulher.', tel: 'tel:180', url: SRC.ligue180.url }
+      ],
+
+      flowTitle: flow ? flow.title : 'Nenhum caminho selecionado ainda',
+      certaintyLabel: cert.label, certaintyColor: cert.color, certaintyBg: cert.bg,
+      facts, meaning: flow ? flow.meaning : '',
+      steps: flow ? flow.steps.map((st, i) => ({ n: i + 1, title: st.title, desc: st.desc, url: SRC[st.src].url, org: SRC[st.src].org })) : [],
+      fallbacks: flow ? flow.fallbacks : [],
+      escalation: !!esc, escalationReason: esc || '',
+      docsSummary: flow ? 'Checklist com quatro estados, cada item com fonte' : '',
+      costsSummary: flow ? flow.costs[0].value + ' · ' + flow.costs[0].label.toLowerCase() : '',
+      whereSummary: flow ? 'Órgão competente e atendimento gratuito' : '',
+      sourcesSummary: flow ? flow.sources.length + ' fontes vinculadas a este caminho' : '',
+
+      docGroups: this.docGroups(),
+      costs: flow ? flow.costs.map(c => ({
+        label: c.label, value: c.value, note: c.note, waiver: c.waiver,
+        valueColor: c.value === 'Gratuito' ? '#14666B' : (c.value.indexOf('R$') === 0 ? '#0B1F33' : '#8A5F14'),
+        url: SRC[c.src].url, org: SRC[c.src].org
+      })) : [],
+      points: flow ? flow.points.map(p => pointsMap[p]) : [DELEMIG],
+      cityUnmapped: !!(cityA && cityA.unmapped),
+      sourceList: srcList,
+
+      planMissing: flow ? flow.missing : [],
+      planDocs: flow ? [].concat(flow.docs.required.map(d => d.name + ' (obrigatório)'), flow.docs.conditional.map(d => d.name + ' (se aplicável)'), flow.docs.useful.map(d => d.name + ' (se você tiver)'), flow.docs.verify.map(d => d.name + ' (precisa confirmar)')) : [],
+      planCosts: flow ? flow.costs.map(c => c.label + ': ' + c.value) : [],
+      planContacts: flow ? flow.points.map(p => { const pt = pointsMap[p]; return pt.name + ' — ' + pt.rows.map(r => r.v).join(' · '); }) : [],
+      planSources: flow ? flow.sources.map(k => SRC[k].org + ' — ' + SRC[k].title + ' — ' + SRC[k].url + ' (verificado em ' + V + ')') : [],
+
+      a11yOpen: s.a11yOpen, saveOpen: s.saveOpen,
+      toggleA11y: () => this.setState(st => ({ a11yOpen: !st.a11yOpen })),
+      toggleSave: () => this.setState(st => ({ saveOpen: !st.saveOpen })),
+      speakScreen: this.speak, toggleVoice: this.toggleVoice,
+      doPrint: () => window.print(),
+      goBack: this.back, goHome: () => this.go('home'), goLang: () => this.go('lang'),
+      goPrivacyDetail: () => this.go('privacyDetail'), goAbout: () => this.go('about'),
+      goStart: () => this.go(this.props.startMode === 'Relato primeiro' ? 'narrative' : (this.props.startMode === 'Categorias primeiro' ? 'categories' : 'start')),
+      goCategories: () => this.go('categories'), goNarrative: () => this.go('narrative'),
+      goUrgent: () => this.go('urgent'), goResult: () => this.go('result'),
+      goDocs: () => this.go('docs'), goCosts: () => this.go('costs'), goWhere: () => this.go('where'),
+      goSources: () => this.go('sources'), goPlan: () => this.go('plan'),
+      noop: () => {}
+    };
+  }
+}
+</script>
+</body>
+</html>

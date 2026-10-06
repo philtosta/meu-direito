@@ -1,0 +1,334 @@
+{
+  "app_version": "1.0.2",
+  "status": "candidata ao congelamento — aguardando auditoria independente",
+  "knowledge_base": "kb-2026-08-14",
+  "verified_at": "2026-08-14",
+  "verification_method": "leitura manual das páginas oficiais cadastradas; sem checagem programática de HTTP status neste ambiente",
+  "sources": [
+    {
+      "key": "refugio",
+      "org": "GOV.BR / MJSP",
+      "title": "Solicitar refúgio",
+      "url": "https://www.gov.br/pt-br/servicos/solicitar-refugio",
+      "status": "verified",
+      "supports": [
+        "procedimento",
+        "órgão",
+        "etapas",
+        "documentos",
+        "exigência de estar em território brasileiro para protocolar o pedido"
+      ],
+      "dynamic": false
+    },
+    {
+      "key": "conareServicos",
+      "org": "Ministério da Justiça",
+      "title": "Serviços da Coordenação-Geral do Conare",
+      "url": "https://www.gov.br/mj/pt-br/assuntos/seus-direitos/refugio/servicos",
+      "status": "verified",
+      "supports": [
+        "gratuidade dos serviços do Conare"
+      ],
+      "dynamic": false
+    },
+    {
+      "key": "sisconare",
+      "org": "Ministério da Justiça",
+      "title": "Sisconare — Sistema do Conare",
+      "url": "https://www.gov.br/mj/pt-br/assuntos/seus-direitos/refugio/sisconare",
+      "status": "verified",
+      "supports": [
+        "sistema oficial de pedido"
+      ],
+      "dynamic": false
+    },
+    {
+      "key": "dprnm",
+      "org": "GOV.BR",
+      "title": "Obter Documento Provisório de Registro Nacional Migratório",
+      "url": "https://www.gov.br/pt-br/servicos/obter-documento-provisorio-de-registro-nacional-migratorio",
+      "status": "verified",
+      "supports": [
+        "custo",
+        "procedimento"
+      ],
+      "dynamic": false
+    },
+    {
+      "key": "protocolo",
+      "org": "GOV.BR",
+      "title": "Renovar protocolo de refúgio (Sisconare)",
+      "url": "https://www.gov.br/pt-br/servicos/renovar-protocolo-de-refugio-para-solicitante-que-esta-no-sisconare",
+      "status": "verified",
+      "supports": [
+        "renovação de protocolo"
+      ],
+      "dynamic": false
+    },
+    {
+      "key": "apatridia",
+      "org": "GOV.BR / MJSP",
+      "title": "Obter reconhecimento como apátrida",
+      "url": "https://www.gov.br/pt-br/servicos/obter-reconhecimento-como-apatrida",
+      "status": "verified",
+      "supports": [
+        "requisito de residência no Brasil",
+        "procedimento",
+        "gratuidade"
+      ],
+      "dynamic": false
+    },
+    {
+      "key": "apatridia_mj",
+      "org": "Ministério da Justiça",
+      "title": "Apatridia — informações institucionais",
+      "url": "https://www.gov.br/mj/pt-br/assuntos/seus-direitos/migracoes/apatridia",
+      "status": "verified",
+      "supports": [
+        "órgão",
+        "contexto institucional"
+      ],
+      "dynamic": false
+    },
+    {
+      "key": "crnm2via",
+      "org": "GOV.BR",
+      "title": "Solicitar 2ª via de CRNM",
+      "url": "https://www.gov.br/pt-br/servicos/solicitar-2a-via-de-carteira-de-registro-nacional-migratorio-crnm",
+      "status": "verified",
+      "supports": [
+        "hipóteses de via de igual teor",
+        "etapas",
+        "requisito de autorização de residência válida"
+      ],
+      "dynamic": false
+    },
+    {
+      "key": "crnmSubst",
+      "org": "GOV.BR",
+      "title": "Obter Carteira de Registro Nacional Migratório (emissão e substituição)",
+      "url": "https://www.gov.br/pt-br/servicos/obter-carteira-de-registro-nacional-migratorio",
+      "status": "verified",
+      "supports": [
+        "substituição por alteração de dados",
+        "emissão"
+      ],
+      "dynamic": false
+    },
+    {
+      "key": "faqPf",
+      "org": "Polícia Federal",
+      "title": "Dúvidas frequentes — imigração",
+      "url": "https://www.gov.br/pf/pt-br/assuntos/imigracao/pt/duvidas",
+      "status": "verified",
+      "supports": [
+        "renovação x emissão",
+        "atendimento presencial"
+      ],
+      "dynamic": true
+    },
+    {
+      "key": "residencia",
+      "org": "GOV.BR",
+      "title": "Obter autorização de residência e CRNM",
+      "url": "https://www.gov.br/pt-br/servicos/obter-autorizacao-de-residencia-e-carteira-de-registro-migratorio",
+      "status": "periodic_review",
+      "supports": [
+        "taxa 140066",
+        "taxa 140120",
+        "procedimento"
+      ],
+      "dynamic": true
+    },
+    {
+      "key": "taxas",
+      "org": "Polícia Federal",
+      "title": "Taxas de migração",
+      "url": "https://www.gov.br/pf/pt-br/assuntos/imigracao/card/taxas",
+      "status": "periodic_review",
+      "supports": [
+        "incidência de taxas",
+        "isenções"
+      ],
+      "dynamic": true
+    },
+    {
+      "key": "docsPf",
+      "org": "Polícia Federal",
+      "title": "Documentação exigida — imigração",
+      "url": "https://www.gov.br/pf/pt-br/assuntos/imigracao/pt/nacionalidade/objetivo/servico/documentos",
+      "status": "verified",
+      "supports": [
+        "documentos por serviço"
+      ],
+      "dynamic": false
+    },
+    {
+      "key": "pfUnidades",
+      "org": "Polícia Federal",
+      "title": "Superintendências e delegacias da PF",
+      "url": "https://www.gov.br/pf/pt-br/acesso-a-informacao/institucional/quem-e-quem/superintendencias-e-delegacias",
+      "status": "periodic_review",
+      "supports": [
+        "localizador de unidade"
+      ],
+      "dynamic": true
+    },
+    {
+      "key": "reuniao",
+      "org": "Ministério da Justiça",
+      "title": "Autorização de residência — reunião familiar",
+      "url": "https://www.gov.br/mj/pt-br/assuntos/seus-direitos/migracoes/autorizacao-de-residencia",
+      "status": "verified",
+      "supports": [
+        "rota de residência"
+      ],
+      "dynamic": false
+    },
+    {
+      "key": "vistoReuniao",
+      "org": "Ministério da Justiça",
+      "title": "Visto para reunião familiar",
+      "url": "https://www.gov.br/mj/pt-br/assuntos/seus-direitos/refugio/servicos/visto-para-reuniao-familiar",
+      "status": "verified",
+      "supports": [
+        "rota consular"
+      ],
+      "dynamic": false
+    },
+    {
+      "key": "mre",
+      "org": "Ministério das Relações Exteriores",
+      "title": "Portal Consular — repartições e serviços consulares",
+      "url": "https://www.gov.br/mre/pt-br/assuntos/portal-consular",
+      "status": "needs_revalidation",
+      "supports": [
+        "localização de repartição consular na etapa consular de visto para reunião familiar",
+        "variação de taxas consulares"
+      ],
+      "dynamic": true,
+      "note": "Nesta versão não é usada como órgão do pedido de apatridia nem como local de protocolo de refúgio."
+    },
+    {
+      "key": "pfBahia",
+      "org": "Polícia Federal",
+      "title": "Superintendência Regional na Bahia",
+      "url": "https://www.gov.br/pf/pt-br/acesso-a-informacao/institucional/quem-e-quem/superintendencias-e-delegacias/bahia/superintendencia-regional-na-bahia",
+      "status": "periodic_review",
+      "supports": [
+        "endereço",
+        "horário",
+        "contatos DELEMIG"
+      ],
+      "dynamic": true
+    },
+    {
+      "key": "dpu",
+      "org": "DPU",
+      "title": "Defensoria Pública da União — onde nos encontrar",
+      "url": "https://direitoshumanos.dpu.def.br/onde-nos-encontrar/",
+      "status": "verified",
+      "supports": [
+        "atendimento gratuito",
+        "unidades"
+      ],
+      "dynamic": true
+    },
+    {
+      "key": "lei13445",
+      "org": "Presidência da República",
+      "title": "Lei nº 13.445/2017 — Lei de Migração",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2017/lei/l13445.htm",
+      "status": "verified",
+      "supports": [
+        "base normativa"
+      ],
+      "dynamic": false
+    },
+    {
+      "key": "lei9474",
+      "org": "Presidência da República",
+      "title": "Lei nº 9.474/1997 — Lei do Refúgio",
+      "url": "https://www.planalto.gov.br/ccivil_03/leis/l9474.htm",
+      "status": "verified",
+      "supports": [
+        "base normativa"
+      ],
+      "dynamic": false
+    },
+    {
+      "key": "cras",
+      "org": "Prefeitura de Salvador",
+      "title": "CRAS — unidades",
+      "url": "https://sempre.salvador.ba.gov.br/cras/",
+      "status": "periodic_review",
+      "supports": [
+        "assistência social local"
+      ],
+      "dynamic": true
+    },
+    {
+      "key": "craiLf",
+      "org": "Prefeitura de Lauro de Freitas",
+      "title": "CRAI — notícia oficial de mapeamento (2021)",
+      "url": "https://laurodefreitas.ba.gov.br/2021/noticias/sepadhir-divulga-resultado-do-mapeamento-de-pessoas-refugiadas-e-migrantes-em-lauro-de-freitas/3562",
+      "status": "needs_revalidation",
+      "supports": [
+        "contexto local"
+      ],
+      "dynamic": true
+    },
+    {
+      "key": "disque100",
+      "org": "GOV.BR",
+      "title": "Denunciar violação de direitos humanos (Disque 100)",
+      "url": "https://www.gov.br/pt-br/servicos/denunciar-violacao-de-direitos-humanos",
+      "status": "verified",
+      "supports": [
+        "canal 100"
+      ],
+      "dynamic": false
+    },
+    {
+      "key": "ligue180",
+      "org": "Ministério das Mulheres",
+      "title": "Ligue 180",
+      "url": "https://www.gov.br/mulheres/pt-br/ligue180",
+      "status": "verified",
+      "supports": [
+        "canal 180"
+      ],
+      "dynamic": false
+    },
+    {
+      "key": "samu",
+      "org": "Ministério da Saúde",
+      "title": "SAMU 192",
+      "url": "https://www.gov.br/saude/pt-br/composicao/saes/samu-192",
+      "status": "verified",
+      "supports": [
+        "canal 192"
+      ],
+      "dynamic": false
+    },
+    {
+      "key": "anatel190",
+      "org": "Anatel",
+      "title": "Serviços de Utilidade Pública e de Emergência (tridígitos) — 190 Polícia Militar",
+      "url": "https://www.gov.br/anatel/pt-br/regulado/acompanhamento-e-controle/servicos-de-utilidade-publica-e-de-emergencia-tridigitos",
+      "status": "verified",
+      "supports": [
+        "identificação do 190 como Polícia Militar",
+        "gratuidade das chamadas de emergência"
+      ],
+      "dynamic": false,
+      "note": "Fonte administrativa federal que enuncia expressamente 190 (Polícia Militar), 192 (SAMU) e 193 (Bombeiros). Nesta rodada não foi localizada página de serviço da SSP-BA ou da PMBA que enunciasse o número; a jurisdição registrada é federal, e não estadual."
+    }
+  ],
+  "changes_from_v1_0_1": [
+    "nenhuma fonte adicionada, removida ou alterada de URL",
+    "mre (Portal Consular) deixa de ser usada como rota do pedido de apatridia e como local de protocolo de refúgio; permanece vinculada apenas à etapa consular de visto para reunião familiar",
+    "crnm2via passa a sustentar também o requisito de autorização de residência válida na variante de segunda via",
+    "refugio passa a sustentar também o bloqueio territorial (pedido protocolado em território brasileiro)"
+  ]
+}

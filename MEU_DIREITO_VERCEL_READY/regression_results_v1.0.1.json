@@ -1,0 +1,139 @@
+{
+  "app_version": "1.0.1",
+  "executed_at": "2026-08-14",
+  "scope": "verificação interna de desenvolvimento — não é validação científica independente",
+  "method_note": "PASS (executado) indica teste efetivamente rodado nesta rodada. PASS (inspeção de código) indica verificação de lógica sem execução automatizada. NÃO EXECUTADO indica ausência de evidência, não sucesso.",
+  "parser_summary": {
+    "total": 12,
+    "failures": 0,
+    "file": "ai_parser_regression_v1.0.1.json"
+  },
+  "cases": [
+    {
+      "id": "J007",
+      "area": "Apatridia",
+      "entrada": "Fluxo apatridia com \"Você reside atualmente no Brasil? = Não\"",
+      "esperado": "Bloqueio por requisito de residência, independente da localização física",
+      "observado": "Estado blocked com texto próprio de residência; localização física continua governando apenas o órgão",
+      "metodo": "inspeção de código",
+      "status": "PASS (inspeção de código)"
+    },
+    {
+      "id": "J007b",
+      "area": "Apatridia",
+      "entrada": "\"Você reside atualmente no Brasil? = Não sei\"",
+      "esperado": "Não presumir residência nem elegibilidade; pedir confirmação e escalar",
+      "observado": "Estado blocked variante \"precisamos confirmar sua residência\", escalonamento para DPU, custos \"Precisa confirmar\"",
+      "metodo": "inspeção de código",
+      "status": "PASS (inspeção de código)"
+    },
+    {
+      "id": "J007c",
+      "area": "Apatridia",
+      "entrada": "Reside no Brasil = Sim, mas está fisicamente fora hoje",
+      "esperado": "Requisito atendido; órgão não presume atendimento presencial no Brasil",
+      "observado": "Fluxo segue; variáveis in_brazil e residence_br permanecem independentes",
+      "metodo": "inspeção de código",
+      "status": "PASS (inspeção de código)"
+    },
+    {
+      "id": "J008",
+      "area": "CRNM",
+      "entrada": "Opções extravio, furto e roubo",
+      "esperado": "As três acionam a verificação documental de registro policial; danificado não aciona",
+      "observado": "Flag bo em extravio, furto e roubo; pergunta condicional; item de checklist com condição correspondente",
+      "metodo": "inspeção de código",
+      "status": "PASS (inspeção de código)"
+    },
+    {
+      "id": "F009",
+      "area": "Localização",
+      "entrada": "\"Você está no Brasil agora? = Não sei como responder\"",
+      "esperado": "Zero órgão territorial presumido; mensagem, botão de correção e atendimento humano",
+      "observado": "pkeys reduzido a DPU (atendimento jurídico, não territorial); blocos de mensagem no resultado e em \"Onde fazer\"; botão redoLocation refaz a pergunta",
+      "metodo": "inspeção de código",
+      "status": "PASS (inspeção de código)"
+    },
+    {
+      "id": "AI001",
+      "area": "Camada generativa",
+      "entrada": "12 payloads sintéticos, inclusive adversariais",
+      "esperado": "Rejeição de JSON inválido, URL, HTML, comando e limites; allowlist de fluxo; confidence conservadora",
+      "observado": "12 de 12 conforme esperado — ver ai_parser_regression_v1.0.1",
+      "metodo": "execução real da função aiValidate extraída do arquivo",
+      "status": "PASS (executado)"
+    },
+    {
+      "id": "AI001b",
+      "area": "Camada generativa",
+      "entrada": "Payload rejeitado pelo validador",
+      "esperado": "Não exibir conteúdo rejeitado; oferecer triagem determinística",
+      "observado": "Estado aiError=blocked com aviso \"A análise automática não pôde ser concluída com segurança\"; nenhum fato exibido",
+      "metodo": "inspeção de código",
+      "status": "PASS (inspeção de código)"
+    },
+    {
+      "id": "AI002",
+      "area": "Runtime da IA",
+      "entrada": "Sem endpoint configurado / com endpoint configurado",
+      "esperado": "Dois estados coerentes, sem chave no cliente e sem simular compreensão",
+      "observado": "aiRuntime resolve endpoint > prototype > off/unavailable; endpoint via variável/prop, POST JSON; tela \"Como funciona\" declara o runtime em uso",
+      "metodo": "inspeção de código",
+      "status": "PASS (inspeção de código)"
+    },
+    {
+      "id": "AI002b",
+      "area": "Runtime da IA",
+      "entrada": "Chamada a endpoint real configurado",
+      "esperado": "Resposta validada pelo mesmo validador",
+      "observado": "Não executado: nenhum endpoint server-side existe neste ambiente",
+      "metodo": "—",
+      "status": "NÃO EXECUTADO"
+    },
+    {
+      "id": "F010",
+      "area": "Fontes",
+      "entrada": "Card 190 → \"Fonte oficial\"",
+      "esperado": "Página oficial que sustente a informação",
+      "observado": "Anatel, página de tridígitos, que enuncia 190 (Polícia Militar) e a gratuidade das chamadas de emergência",
+      "metodo": "leitura da página",
+      "status": "PASS com desvio documentado (fonte federal, não estadual)"
+    },
+    {
+      "id": "F011",
+      "area": "Persistência",
+      "entrada": "Salvar plano com localStorage indisponível",
+      "esperado": "saved permanece falso, mensagem clara, aplicação utilizável",
+      "observado": "try/catch com leitura de confirmação; saveFailed exibe a mensagem prevista; nenhum estado de sucesso",
+      "metodo": "inspeção de código",
+      "status": "PASS (inspeção de código)"
+    },
+    {
+      "id": "F011b",
+      "area": "Persistência",
+      "entrada": "Exceção forçada de armazenamento em navegador real",
+      "esperado": "Mesmo comportamento observado acima",
+      "observado": "Não executado neste ambiente",
+      "metodo": "—",
+      "status": "NÃO EXECUTADO"
+    },
+    {
+      "id": "R001",
+      "area": "Documentação",
+      "entrada": "CSVs da V1.0.1",
+      "esperado": "UTF-8, uma linha real por registro, cabeçalho único, campos escapados",
+      "observado": "Reexportados com quebras de linha reais e aspas escapadas; os CSVs da V1.0.0 foram preservados como estavam, para não alterar a baseline",
+      "metodo": "geração e leitura dos arquivos",
+      "status": "PASS (executado)"
+    },
+    {
+      "id": "REG01",
+      "area": "Regressão dos fluxos",
+      "entrada": "Refúgio, apatridia, CRNM (três rotas) e reunião familiar (duas rotas)",
+      "esperado": "Sem saída undefined, sem exceção, escalonamento preservado",
+      "observado": "Verificado por inspeção de código e pela revisão de interface desta rodada; suíte automatizada permanece não implementada",
+      "metodo": "inspeção de código e revisão de interface",
+      "status": "PARCIAL — sem suíte automatizada"
+    }
+  ]
+}

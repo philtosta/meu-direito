@@ -1,0 +1,20 @@
+{
+  "app_version": "1.0.2",
+  "provider": "NÃO CONFIGURADO",
+  "model": "NÃO CONFIGURADO",
+  "prompt_version": "NÃO CONFIGURADO",
+  "knowledge_base_version": "kb-2026-08-14",
+  "temperature": null,
+  "top_p": null,
+  "max_tokens": null,
+  "endpoint": "NÃO CONFIGURADO (a rota /api/ai/understand existe apenas como contrato previsto, não como endpoint provado neste ambiente)",
+  "freeze_timestamp": null,
+  "generative_layer_status": "NÃO PRONTA PARA VALIDAÇÃO EXPERIMENTAL FINAL",
+  "notes": [
+    "Não há credenciais nem endpoint server-side disponíveis neste ambiente; nenhum provedor ou modelo foi configurado ou inferido.",
+    "O runtime de prototipagem do ambiente, quando presente, serve apenas para demonstração e não é endpoint reprodutível: não deve ser tratado como configuração de pesquisa.",
+    "Campos NÃO CONFIGURADO e null não devem ser preenchidos por suposição.",
+    "A triagem determinística e a base jurídica funcionam sem a camada generativa.",
+    "freeze_timestamp permanece null até a auditoria independente."
+  ]
+}

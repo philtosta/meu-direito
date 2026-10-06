@@ -1,0 +1,136 @@
+{
+  "app_version": "1.0.0",
+  "executed_at": "2026-08-14",
+  "method": "navegação manual do protótipo e inspeção de código; nenhuma suíte automatizada foi executada nesta versão",
+  "cases": [
+    {
+      "id": "J001",
+      "area": "CRNM",
+      "input": "Categoria documento → 'Preciso corrigir ou alterar um dado'",
+      "expected": "Rota de substituição, não 2ª via",
+      "observed": "Rota 'Substituição da CRNM — correção ou alteração de dados', com serviço de obtenção/substituição como fonte",
+      "status": "PASS (manual)"
+    },
+    {
+      "id": "J004",
+      "area": "CRNM",
+      "input": "'Venceu'",
+      "expected": "Pergunta sobre tipo de residência antes de concluir; sem solução universal",
+      "expected_extra": "nenhuma afirmação de 2ª via",
+      "observed": "Pergunta de prazo determinado/indeterminado; rota 'CRNM vencida' com certeza needs_info",
+      "status": "PASS (manual)"
+    },
+    {
+      "id": "J005",
+      "area": "CRNM",
+      "input": "'Perdi' / 'Está danificada'",
+      "expected": "Boletim de ocorrência não exigido universalmente",
+      "observed": "Pergunta de BO não aparece; item condicional no checklist com ressalva",
+      "status": "PASS (manual)"
+    },
+    {
+      "id": "F001",
+      "area": "Localização",
+      "input": "'Você está no Brasil agora?' = Não, fluxo CRNM",
+      "expected": "DELEMIG/Salvador não aparece como encaminhamento",
+      "observed": "Ponto consular exibido; DELEMIG removida; aviso de contexto no resultado",
+      "status": "PASS (manual)"
+    },
+    {
+      "id": "F002",
+      "area": "Localização",
+      "input": "Cidade = 'Outra cidade'",
+      "expected": "Nenhum endereço local inventado; localizadores oficiais",
+      "observed": "DELEMIG substituída pelo localizador de unidades da PF; links PF e DPU",
+      "status": "PASS (manual)"
+    },
+    {
+      "id": "F003",
+      "area": "Apatridia",
+      "input": "Apatridia com 'Não estou no Brasil'",
+      "expected": "Bloqueio com aviso de requisito e fonte",
+      "observed": "Estado 'Requisito não atendido' com fonte oficial, encaminhamento consular e DPU, custos não aplicáveis",
+      "status": "PASS (manual)"
+    },
+    {
+      "id": "F004",
+      "area": "Relato livre",
+      "input": "Dois relatos semanticamente diferentes",
+      "expected": "Conjuntos de fatos diferentes",
+      "observed": "Fatos vêm da resposta do modelo em JSON estrito; sem conjunto fixo no código",
+      "status": "PASS (manual)"
+    },
+    {
+      "id": "F005",
+      "area": "Relato livre",
+      "input": "Relato qualquer + botão de continuidade",
+      "expected": "Fluxo confirmado pelo usuário, nunca CRNM por hard-code",
+      "observed": "startRefugioQuiz removido; fluxo vem de suggested_flow confirmado; confiança baixa leva à escolha de assunto",
+      "status": "PASS (manual)"
+    },
+    {
+      "id": "J006",
+      "area": "Reunião familiar",
+      "input": "Familiar no exterior",
+      "expected": "Rota consular sem taxas brasileiras como custo do pedido",
+      "observed": "Visto para reunião familiar, repartição consular, custo 'Consultar a repartição' com nota de etapa posterior",
+      "status": "PASS (manual)"
+    },
+    {
+      "id": "F006",
+      "area": "Emergência",
+      "input": "Cards 190/192/100/180",
+      "expected": "Fonte própria e compatível por card",
+      "observed": "190 → PMBA (com ressalva de revalidação), 192 → SAMU, 100 → Disque 100, 180 → Ligue 180",
+      "status": "PASS com ressalva (manual)"
+    },
+    {
+      "id": "J002",
+      "area": "Custos",
+      "input": "Fluxo de refúgio → Quanto custa",
+      "expected": "Gratuidade conforme fonte oficial",
+      "observed": "'Gratuito' com fonte dos serviços do Conare; DPRNM 'Sem custo' com fonte do serviço",
+      "status": "PASS (manual)"
+    },
+    {
+      "id": "J003",
+      "area": "Acessibilidade e dados",
+      "input": "Controles de acessibilidade e 'Excluir meus dados'",
+      "expected": "Nenhum controle ligado a noop",
+      "observed": "Ampliação de texto, alto contraste, redução de animações e exclusão local implementados; nenhuma referência a noop no arquivo",
+      "status": "PASS (manual)"
+    },
+    {
+      "id": "F007",
+      "area": "Idiomas",
+      "input": "Seleção de Español / English / Français",
+      "expected": "Não iniciar jornada e avisar que não está validado",
+      "observed": "Aviso 'Em desenvolvimento — não validado nesta versão' e opção de continuar em português",
+      "status": "PASS (manual)"
+    },
+    {
+      "id": "F008",
+      "area": "Voz",
+      "input": "Botão de fala",
+      "expected": "Transcrever de verdade ou não existir",
+      "observed": "Web Speech API com transcrição, parada e erro; aviso e fallback quando o navegador não suporta",
+      "status": "PASS condicional (depende do navegador)"
+    },
+    {
+      "id": "T001",
+      "area": "Testes",
+      "input": "Suíte automatizada de regressão",
+      "expected": "Execução automatizada com PASS/FAIL por ID",
+      "observed": "Não executada nesta versão de protótipo",
+      "status": "PENDENTE"
+    },
+    {
+      "id": "T002",
+      "area": "Testes",
+      "input": "Verificação de HTTP status das fontes",
+      "expected": "Status por URL",
+      "observed": "Não executada neste ambiente; CSV registra a ausência em vez de valor inventado",
+      "status": "PENDENTE"
+    }
+  ]
+}
